@@ -1,10 +1,11 @@
 * Config/Preamble :noexport:
 
 ** Header
-#+title: Complex and Hypercomplex @@latex:\\@@ Iterative Methods
+#+title: Optimized GPU-Based Matrix Inversion
+#+SUBTITLE: Though The Use of Thread-Data Remapping
 #+AUTHOR: Samuel J Monson
 #+EMAIL: monsonsamuel@seattleu.edu
-#+DATE: 2023-05-16
+#+DATE: 2024-05-31
 #+BEAMER_HEADER: \institute{Seattle Univerisity}
 #+DESCRIPTION:
 #+KEYWORDS:
