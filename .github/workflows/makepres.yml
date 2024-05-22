@@ -20,12 +20,17 @@ jobs:
         uses: DeterminateSystems/magic-nix-cache-action@main
 
       - name: nix build
-        run: nix build
+        run: nix build -o result
+
+      - name: Copy results
+        run: |
+          mkdir public
+          cp -L --no-preserve=all -t public ./result/*
 
       - name: Deploy pdf
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: pdf
-          publish_dir: ./result
+          publish_dir: ./public
           force_orphan: true
