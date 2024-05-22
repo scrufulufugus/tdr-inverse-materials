@@ -2,16 +2,10 @@
   stdenvNoCC,
   lib,
   emacs,
-  emacsPackagesFor,
-  texlive,
+  tex,
   ...
 }:
 
-let
-  emacsFull = ((emacsPackagesFor emacs).emacsWithPackages (
-      epkgs: with epkgs; [ use-package org org-ref ]
-    ));
-in
 stdenvNoCC.mkDerivation {
   pname = "tdr-inverse-proposal";
   version = "0.0.1";
@@ -19,8 +13,8 @@ stdenvNoCC.mkDerivation {
   src = ./.;
 
   buildInputs = [
-    emacsFull
-    texlive.combined.scheme-full
+    emacs
+    tex
   ];
 
   preBuild = ''

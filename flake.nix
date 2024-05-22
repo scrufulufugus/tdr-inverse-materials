@@ -10,11 +10,15 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+        tex = pkgs.texlive.combined.scheme-full;
+        emacsWith = ((pkgs.emacsPackagesFor pkgs.emacs).emacsWithPackages (
+          epkgs: with epkgs; [ use-package org org-ref ]
+        ));
       in
       {
         packages = rec {
-          presentation = pkgs.callPackage ./Presentation { };
-          proposal = pkgs.callPackage ./Proposal { };
+          presentation = pkgs.callPackage ./Presentation { tex = tex; emacs = emacsWith; };
+          proposal = pkgs.callPackage ./Proposal { tex = tex; emacs = emacsWith; };
           default = pkgs.buildEnv {
             name = "tdr-inverse-materials";
             paths = [ presentation proposal ];
