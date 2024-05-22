@@ -22,6 +22,9 @@
 #+LaTeX_CLASS_OPTIONS: [aspectratio=169,t]
 #+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
 
+#+CITE_EXPORT: biblatex ieee
+#+BIBLIOGRAPHY: sources.bib
+
 ** Emacs Config
 #+startup: beamer show2levels
 
@@ -75,6 +78,16 @@
 #+BEAMER_HEADER: \setmathfont{TeX Gyre DejaVu Math}[range={\vysmwhtcircle,\times,\vdots}]
 /#+BEAMER_HEADER: \setmonofont{Hack}
 
+*** Citations
+
+Show back-references to in-text citations
+#+LATEX_HEADER: \usepackage[backref=true]{biblatex}
+Change color of citations
+#+LATEX_HEADER: \usepackage{xcolor}
+#+LATEX_HEADER: \hypersetup{colorlinks=true,allcolors=black,citecolor=teal,linkcolor=darkgray}
+Make in-text citations smaller
+#+LATEX_HEADER_EXTRA: \renewcommand*{\citesetup}{\biburlsetup\small\frenchspacing}
+
 *** Environments
 **** Angled Small Vector
 #+LATEX_HEADER: \newenvironment{asvector}{\left\langle\begin{smallmatrix}}{\end{smallmatrix}\right\rangle}
@@ -96,3 +109,16 @@
 * Gauss-Jordan
 
 * Class Activity
+* Conclusion
+:PROPERTIES:
+:BEAMER_env: ignoreheading
+:END:
+
+** References
+:PROPERTIES:
+    :BEAMER_opt: allowframebreaks,label=
+ :END:
+
+#+LATEX: \setlength\bibitemsep{0.5\baselineskip}
+#+LATEX: \nocite{*} % Use all citations
+#+print_bibliography:
