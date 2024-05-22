@@ -12,7 +12,10 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
       {
-        packages.default = pkgs.callPackage ./default.nix { };
+        packages = rec {
+          presentation = pkgs.callPackage ./Presentation/default.nix { };
+          default = presentation;
+        };
 
         devShells.default = pkgs.mkShell.override { stdenv = pkgs.stdenvNoCC; } {
           packages = with pkgs; [ texlive.combined.scheme-full ];
