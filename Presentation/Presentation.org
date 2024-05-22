@@ -72,7 +72,7 @@
 
 *** Configure fonts
 #+BEAMER_HEADER: \setmathfont{Fira Math}
-/#+BEAMER_HEADER: \setmathfont{DejaVu Math TeX Gyre}[range={\vysmwhtcircle,\times,\vdots}]
+#+BEAMER_HEADER: \setmathfont{TeX Gyre DejaVu Math}[range={\vysmwhtcircle,\times,\vdots}]
 /#+BEAMER_HEADER: \setmonofont{Hack}
 
 *** Environments
