@@ -2,7 +2,7 @@
 
 ## About <a name="about"></a>
 
-![Final Presentation - Rendered](https://github.com/scrufulufugus/tdr-inverse-pres/blob/pdf/Final_Pres.pdf)
+![Final Presentation - Rendered](https://github.com/scrufulufugus/tdr-inverse-materials/blob/pdf/Final_Pres.pdf)
 
 ## Building <a name="building"></a>
 
