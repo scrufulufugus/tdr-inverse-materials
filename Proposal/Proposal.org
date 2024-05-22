@@ -241,7 +241,7 @@ A final report containing the following sections:
 - Future Work. Possible future work and open questions.
 - References.
 
-* Bibliography :ignore:
+* Bibliography :ignore:ignoreheading:
 
 #+LATEX: \clearpage % Page break
 #+LATEX: \onecolumn
