@@ -72,7 +72,7 @@
 
 *** Configure fonts
 #+BEAMER_HEADER: \setmathfont{Fira Math}
-#+BEAMER_HEADER: \setmathfont{TeX Gyre DejaVu Math}[range={\vysmwhtcircle,\times,\vdots}]
+#+BEAMER_HEADER: \setmathfont{TeX Gyre DejaVu Math}[range={\vysmwhtcircle,\times,\vdots,\star}]
 /#+BEAMER_HEADER: \setmonofont{Hack}
 
 *** Citations
@@ -100,16 +100,39 @@ Make in-text citations smaller
 #+LATEX_HEADER: \newenvironment{talign*}{\centering $\displaystyle\begin{aligned}}{\end{aligned}$\par}
 
 
-* Introduction :B_ignoreheading:
+* Introduction to Inverses
+
+** What Is An Inverse?
+
+*** Inverse
 :PROPERTIES:
-:BEAMER_env: ignoreheading
+    :BEAMER_env: definition
 :END:
 
-** Matrix Inversion
+The _inverse_ of $a$ is some value $a^{-1}$ such that $a \star a^{-1} = \symbfit{i}$ where $\symbfit{i}$ is the identity of $\star$.
+
+*** Identity
+:PROPERTIES:
+    :BEAMER_env: definition
+    :BEAMER_act: <2->
+:END:
+
+The _identity_ of an operation $\star$ and set $G$ is some value $\symbfit{i} \in G$ where for all $a \in G$, $\symbfit{i} \star a = a \star \symbfit{i} = a$.
+
+*** The Rest :ignore:
+
+#+ATTR_BEAMER: :overlay <3->
+- For example, the set and operation $(\symbb{R}, \times)$ has the identity $\symbfit{i} = 1$ since $1 \times x = x \times 1 = x$ for all $x \in \symbb{R}$.
+- Thus the inverse of $a$ is $\frac{1}{a}$ since $a \times a^{-1} = 1 \to a = \frac{1}{a}$.
+  - Note that this is only true because $a \times b = b \times a$ for all $a,b \in \symbb{R}$.
+
+** Matrix Inverse
 
 ** Uses
 
-* Gauss-Jordan
+* Methods of Matrix Inversion
+
+** Gauss-Jordan Method
 
 * Class Activity
 
