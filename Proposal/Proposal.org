@@ -1,0 +1,250 @@
+* Config/Preamble :noexport:
+** Header
+#+title: Research Proposal: Asynchronous GPU Matrix Inversion
+#+AUTHOR: Samuel J. Monson
+#+EMAIL: monsonsamuel@seattleu.edu
+#+DATE: \today
+#+LATEX_CLASS_OPTIONS: [letterpaper,10pt,hidelinks,twocolumn]
+#+OPTIONS: toc:nil
+** Emacs Config
+#+startup: show2levels
+
+#+begin_src emacs-lisp :exports results :results none :eval export
+  (make-variable-buffer-local 'org-latex-title-command)
+  (setq org-latex-listings t)
+  ;; export snippet translations
+  (add-to-list 'org-export-snippet-translation-alist
+             '("l" . "latex"))
+#+end_src
+
+#+CITE_EXPORT: biblatex ieee
+#+BIBLIOGRAPHY: sources.bib
+
+** LaTeX Config
+*** Spacing
+#+LATEX_HEADER: \usepackage{setspace}
+#+LATEX_HEADER: \onehalfspacing
+
+*** Margins
+#+LATEX_HEADER: \usepackage[total={7in,9in}]{geometry}
+#+LATEX_HEADER: \setlength{\columnsep}{0.375in}
+
+*** Numbering
+#+LATEX_HEADER: \numberwithin{equation}{section} % Number equations by section
+*** Reduce Hyphenation
+#+LATEX_HEADER: \hyphenpenalty=5000
+#+LATEX_HEADER: \tolerance=700
+
+*** Setup Indentation
+#+LATEX_HEADER: \usepackage[indent=2.5em]{parskip}
+
+*** Set Font
+**** Packages
+#+LATEX_HEADER: \usepackage{titling} % For title
+#+LATEX_HEADER: \usepackage{titlesec} % For section headings
+#+LATEX_HEADER: \usepackage{unicode-math} % For font loading
+**** Define fonts
+#+LATEX_HEADER: \newfontfamily\headingfont{Libre Baskerville}
+#+LATEX_HEADER: \setmainfont{DejaVuSerif}
+#+LATEX_HEADER: \setmathfont{DejaVu Math TeX Gyre}
+//#+LATEX_HEADER: \setmathfont{Fira Math}[range={\infty}] % Steal some symbols
+#+LATEX_HEADER: \AtBeginDocument{\renewcommand{\setminus}{\mathbin{\backslash}}} % Replace setminus with nice backslash
+**** Set fonts
+#+LATEX_HEADER: \titleformat*{\section}{\large\bfseries\headingfont}
+#+LATEX_HEADER: \titleformat*{\subsection}{\normalsize\bfseries\headingfont}
+#+LATEX_HEADER: \titleformat*{\subsubsection}{\normalsize\headingfont}
+#+LATEX_HEADER: \renewcommand{\maketitlehooka}{\headingfont}
+*** Define abs
+#+LATEX_HEADER: \usepackage{mathtools}
+#+LATEX_HEADER: \DeclarePairedDelimiter\abs{\lvert}{\rvert} % ABS: abs{}
+
+*** Environments
+**** Angled Small Vector
+#+LATEX_HEADER: \newenvironment{asvector}{\left\langle\begin{smallmatrix}}{\end{smallmatrix}\right\rangle}
+**** Angled Vector
+#+LATEX_HEADER: \newenvironment{avector}{\left\langle\begin{matrix}}{\end{matrix}\right\rangle}
+**** Tight Align
+#+LATEX_HEADER: \newenvironment{talign}{\begin{equation}\begin{aligned}}{\end{aligned}\end{equation}}
+#+LATEX_HEADER: \newenvironment{talign*}{\[\begin{aligned}}{\end{aligned}\]}
+/#+LATEX_HEADER: \newenvironment{talign*}{\centering $\displaystyle\begin{aligned}}{\end{aligned}$\par}
+
+**** Theorems
+#+LATEX_HEADER: \usepackage{amsthm}
+#+LATEX_HEADER: \newtheoremstyle{indentbf}{.5\topsep}{.5em}{\addtolength{\leftskip}{2.5em}}{-1.5em}{\bfseries\headingfont}{}{\newline}{}
+#+LATEX_HEADER: \newtheoremstyle{bf}{.5\topsep}{.5em}{}{}{\bfseries\headingfont}{}{.5em}{}
+***** Theorem
+#+LATEX_HEADER: \theoremstyle{bf}
+#+LATEX_HEADER: \newtheorem{thm}{Theorem}[section]
+
+***** Definition
+#+LATEX_HEADER: \theoremstyle{indentbf}
+#+LATEX_HEADER: \newtheorem{defn}{Definition}[section]
+
+**** Algorithm
+#+LATEX_HEADER: \usepackage[ruled]{algorithm2e}
+
+*** Citations
+
+Show back-references to in-text citations
+#+LATEX_HEADER: \usepackage[backref=true]{biblatex}
+Change color of citations
+#+LATEX_HEADER: \usepackage{xcolor}
+#+LATEX_HEADER: \hypersetup{colorlinks=true,allcolors=black,citecolor=teal,linkcolor=darkgray}
+Make in-text citations smaller
+#+LATEX_HEADER_EXTRA: \renewcommand*{\citesetup}{\biburlsetup\small\frenchspacing}
+
+* Abstract :noexport:
+:PROPERTIES:
+    :UNNUMBERED: t
+:END:
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci eu lobortis elementum nibh tellus molestie nunc non. Neque aliquam vestibulum morbi blandit cursus risus at ultrices. Aliquet bibendum enim facilisis gravida neque convallis a cras. Etiam erat velit scelerisque in dictum non. Sed turpis tincidunt id aliquet risus. Eu volutpat odio facilisis mauris. Duis at consectetur lorem donec massa sapien. Id aliquet risus feugiat in ante. Tincidunt augue interdum velit euismod in pellentesque massa placerat duis. Commodo nulla facilisi nullam vehicula ipsum a arcu. Pharetra vel turpis nunc eget lorem dolor sed viverra ipsum. Suspendisse ultrices gravida dictum fusce ut. Feugiat scelerisque varius morbi enim. Tincidunt arcu non sodales neque sodales ut.
+
+* Problem Statement
+
+@@l:{\Large M}@@atrix inversion is a fundamental component of Linear Algebra that has wide practical application in nearly all math-adjacent fields. Most notably, it has proven to be the best algebraic method for solving linear equations on a computer [cite:@press:2007]. This has made matrix inversion a critical component of everything from Computer Graphics to Machine Learning [cite:@anton:2014].
+
+However, a significant drawback of matrix inversion lies in its computationally intensive nature. Traditional methods such as Gauss-Jordan [cite:@steven:1987] and LU-Decomposition [cite:@press:2007] possess a multiplicative asymptotic time complexity of $O(n^3)$ for any given $n \times n$ matrix. In 1969 Strassen [cite:@strassen:1969] introduced a new method that brought the complexity down to $O(n^{2.808})$. Following this discovery, various groups competed to improve on Strassen's results culminating in the Coppersmith and Winograd method [cite:@coppersmith:1981] which achieved a time complexity of $O(n^{2.376})$. Theoretically, the best sequential cost achievable for matrix inversion is $O(n^2)$ [cite:@cohn:2005]; however, no general algorithm has been found that achieves this cost.
+
+While no general $O(n^2)$ inversion method has been found, there exist various methods that optimize for specific matrix types. Triangular matrices can be inverted using Gaussian Elimination in $O(n^2)$ time [cite:@press:2007]. The inverse of an orthogonal matrix is its transpose [cite:@anton:2014], thus the time complexity to invert an orthogonal matrix corresponds to the number of swap operations required to flip rows and columns, specifically $\frac{n^2}{2} - n$. Alternatively, if the matrix is simply read from memory in the new order, the time complexity is O(1). Cholesky Decomposition [cite:@press:2007] improves on LU-Decomposition for symmetric, positive-definite matrices and has a time complexity of $O\left(\frac{3}{4}n^3 + \frac{3}{2}n^2\right)$. QR-decomposition [cite:@press:2007] is slower then LU in most cases excluding where the inverses of multiple similar matrices are needed. For example, when we have a series of matrices where $A_{i+1} = A_i + B$ intermediate steps of the QR process of $A_i$ can be reused for $A_{i+1}$.
+
+The Graphics Processing Unit (GPU) is a specialized co-processor originally created for the task of translating data representations into computer graphics. As modern display technology consists of a grid of independent points, GPUs have evolved to excel at embarrassingly parallel workloads. Due to this specialization, GPUs have found significant success outside of their originally designed function, particularly in scientific fields where extensive independent computation is crucial [cite:@nguyen:2007]. Since a grid of points is essentially a physical example of a matrix, GPUs are especially well-suited for operations involving matrices.
+
+** Graveyard :noexport:
+
+The Gauss-Jordan method remains one of the oldest and widely employed techniques for matrix inversion [cite:@steven:1987]. It possesses a computational complexity of $O(n^3)$. Alternatively, the Strassen method [cite:@strassen:1969] improves this complexity to $O(n^{2.808})$, while the Coppersmith and Winograd method [cite:@coppersmith:1981] achieves further improvement with a complexity of $O(n^{2.376})$. Theoretically, the best sequential cost achievable is $O(n^2)$ [cite:@cohn:2005] for an $n \times n$ matrix. However, no universally applicable algorithms exist that at this cost.
+
+Further, Gauss-Jordan operations are fairly sequential, which limits the potential of parallel implementations.
+
+This project aims to improve on the latency of processing sufficiently large matrix inverses through the use of GPU computations; it will improve on existing GPU methods by implementing asynchronous...
+
+Its most prevalent use is in solving linear equations on computers, where it has proven to be the most effective algebraic method. This has made matrix inversion a critical component of everything from Computer Graphics transformations to solving statistical models.
+
+* Related Work
+
+** Strassen Matrix Inversion
+:PROPERTIES:
+    :CUSTOM_ID: strassen
+:END:
+
+In 1969 **Strassen [cite:@strassen:1969]** published a simple 3 page paper that, for the first time, showed algorithms for matrix multiplication and inversion that were sub-$O(n^3)$. Though not fully recognized until later, this was a huge milestone for computing. While the matrix multiplication algorithm is an achievement with arguably greater impact we will focus on inversion. Strassen's matrix inversion operates by splitting the matrix into quadrants and running recursively on two of them. The algorithm is a prime example of a divide and conquer approach and is thus well suited for a parallel implementation.
+
+However, there are some problems that prevent Strassen matrix inversion from being the ideal algorithm. Due to the recursive inversion only taking place on two of the quadrants, certain matrices can end up with recursive quadrants that are very close to singular, leading to high numerical error. A solution is to pivot the matrix at each level to whichever of the top-most quadrants has a higher determinant [cite:@bailey:1988], but this adds extra complexity to the algorithm. Another issue is that each level of recursion contains many intermittent matrix multiplications. All of these calculations must be stored, which more then doubles the space requirements of a typical inversion.
+
+** Parallel Gauss-Jordan
+:PROPERTIES:
+    :CUSTOM_ID: sharma
+:END:
+
+While Gauss-Jordan is no longer the most efficient matrix inversion method, **Sharma et al [cite:@sharma:2013]** were able to redesign it into a highly parallel GPU based Gauss-Jordan algorithm. Their implementation showed impressive results; achieving $O(n)$ latency, though with some major caveats.
+
+Sharma et al hits many of the limitations of GPU hardware. In order to avoid the extra I/O penalty associated with global GPU memory, the algorithm must be able to store one row and one column of the matrix in shared memory. Additionally, the GPU algorithm improves on the parallel $O(n^3)$ by doing $n^2$ of the work in parallel, thus if the GPU does not have at least $n^2$ parallel threads, than the latency will increase exponentially.
+
+*** Scratch :noexport:
+
+The GPU algorithm improves on the parallel $O(n^3)$ by doing $n^2$ of the work in parallel, thus if the GPU does not have at least $n^2$ parallel threads than the latency will increase exponentially by a factor of $\log_{\symbf{P}}\left( n^2 \right)$ where $\symbf{P}$ is the number of simultaneous threads; typically $\symbf{P} = \textit{Multiprocessors} \times \textit{Threads per multiprocessor}$. A NVIDIA RTX 4090 with $\symbf{P} = 4096$ can perform at most $n = 64$ in $O(n)$ time.
+
+
+** In-Place Approach
+:PROPERTIES:
+    :CUSTOM_ID: xuebin
+:END:
+
+Typically, the Gauss-Jordan algorithm requires appending a $n \times n$ unit matrix to the original matrix. However, in 2013 **DasGupta [cite:@dasgupta:2013]** introduced a modified Gauss-Jordan algorithm that handles the inversion in-place. While this algorithm improves the space efficiency of Gauss-Jordan, it retains the time complexity of $O(n^3)$. In 2023, **Xuebin et al [cite:@xuebin:2023]** created a parallel modification of DasGupta's algorithm that is optimized for inverting many small matrices at a time on GPU. This algorithm is bound by similar limitations to the one in Sharma et al [cite:@sharma:2013] (see [[#sharma]]). Assuming $n \times \textit{number of matrices}$ is small enough to fit into the total number of parallel threads, then the algorithm runs in $O(n^2)$ time.
+
+** GPU Thread-Data Remapping
+:PROPERTIES:
+    :CUSTOM_ID: cuneo
+:END:
+
+Due to the nature of GPU architecture, threads within the same warp are not able to execute different paths in parallel. This limits the performance of workloads that contain conditional branching or uneven allocation of work as branches are serialized. Largely divergent workloads can try to avoid this overhead by periodically reshuffling data to reduce the divergence inside warps; this technique is called Thread-Data Remapping (TDR). The most common form of TDR involves stopping all work at set intervals and performing synchronization. This approach is less than ideal since full workload synchronization requires the CPU to step in and handle workload discrepancies between runs. Communication between the CPU and GPU is expensive and should be avoided if possible.
+
+A better approach, introduced by **Cuneo and Bailey [cite:@cuneo:2024]**, handles TDR entirely on-GPU by implementing a work scheduling mechanism that is reminiscent of the promise and future concurrency model. While not the first on-GPU TDR, Cuneo and Bailey's method is the first to allow remapping across blocks without synchronization.
+
+*** TODO Talk about Harmonize :noexport:
+
+Additionally support deferring work indefinitely.
+
+* Justification
+
+While there are many attempts at GPU matrix inversion algorithms, none thus far have used on-GPU TDR to handle the optimization of work. Cases of large recursion (see [[#strassen]]) or work sizes (see [[#sharma]]) exceeding the number of available threads can benefit immensely from the ability to remap and defer work on demand. Therefore, it is of interest to develop an algorithm that takes advantage of the highly parallel asynchronous compute offered by Cuneo and Bailey [cite:@cuneo:2024].
+
+* Evaluation
+
+As the goal of this research is a practical implementation, the results will be evaluated through experimental comparison to existing matrix inversion implementations and by asymptotic complexity analysis. All necessary software is available for free. The development timeline of implementation can be found in section [[#plan]]. Access to a capable GPU will be necessary for the purposes of benchmarking.
+
+* Research Plan
+:PROPERTIES:
+    :CUSTOM_ID: plan
+:END:
+
+The following is a list of major project milestones and completion dates. Dates are only intended to be rough estimates and are thus subject to change.
+
+| #              | Name                   |       Due  |
+|----------------+------------------------+------------|
+| [[#milestone-0]]   | Preliminary Setup      | 02/28      |
+| [[#winter-report]] | Winter Progress Report | 03/15      |
+| [[#milestone-1]]   | Naive Gauss-Jordan     | 04/10      |
+| [[#milestone-2]]   | Optimized Gauss-Jordan | 04/24      |
+| [[#milestone-3]]   | Hybrid Approach        | 05/15      |
+| [[#final-paper]]   | Final Report           | 06/07      |
+
+
+** Preliminary Setup
+:PROPERTIES:
+    :CUSTOM_ID: milestone-0
+:END:
+
+Prepare a project repository with all necessary dependencies.
+
+** Winter Progress Report
+:PROPERTIES:
+    :CUSTOM_ID: winter-report
+:END:
+
+A report containing all progress of winter quarter.
+
+** Naive Gauss-Jordan
+:PROPERTIES:
+    :CUSTOM_ID: milestone-1
+:END:
+
+Implement parallel Gauss-Jordan based upon the algorithm developed in Sharma et al [cite:@sharma:2013] (section [[#sharma]]) that adds basic support for on-GPU TDR though the use of asynchronous primitives provided by Harmonize [cite:@cuneo:2024] (section [[#cuneo]]).
+
+** Optimized Gauss-Jordan
+:PROPERTIES:
+    :CUSTOM_ID: milestone-2
+:END:
+
+Attempt optimization of parallel Gauss-Jordan algorithm by removing as much synchronization as possible. If applicable, implement in-place optimizations provided by Xuebin et al [cite:@xuebin:2023] (section [[#xuebin]]).
+
+** Hybrid Approach
+:PROPERTIES:
+    :CUSTOM_ID: milestone-3
+:END:
+
+Implement a divergent path approach that chooses the optimal algorithm for any given matrix.
+
+** Final Report
+:PROPERTIES:
+    :CUSTOM_ID: final-paper
+:END:
+
+A final report containing the following sections:
+
+- Abstract. Project's goals, methodologies, and contributions.
+- Introduction. Context of project, project goals and contributions.
+- Related work. Existing work relevant to project and what distinguishes project from existing work.
+- Description of Research. Description of models and assumptions (if any). Details of project goals and design. How the design of the project fulfills the goals.
+- Evaluation / Results. Evaluation methodology and present results and analyses.
+- Conclusions. Lessons learned and goals achieved by project.
+- Future Work. Possible future work and open questions.
+- References.
+
+* Bibliography :ignore:
+
+#+LATEX: \clearpage % Page break
+#+LATEX: \onecolumn
+#+LATEX: \setlength\bibitemsep{0.5\baselineskip}
+#+LATEX: \nocite{*} % Use all citations
+#+print_bibliography:

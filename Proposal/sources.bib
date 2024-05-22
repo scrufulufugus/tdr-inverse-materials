@@ -1,0 +1,381 @@
+@Article{sharma:2013,
+  author =       {Girish Sharma and Abhishek Agarwala and Baidurya Bhattacharya},
+  title =        {A fast parallel Gauss Jordan algorithm for matrix inversion
+                  using CUDA},
+  journal =      {Computers \& Structures},
+  volume =       128,
+  pages =        {31-37},
+  year =         2013,
+  issn =         {0045-7949},
+  doi =          {10.1016/j.compstruc.2013.06.015},
+  url =
+                  {https://www.sciencedirect.com/science/article/pii/S0045794913002095},
+  keywords =     {Graphics processing unit, Compute unified development
+                  architecture, Matrix inversion, Gauss Jordan, Parallelization},
+  abstract =     {The ability to invert large matrices quickly and accurately
+                  determines the effectiveness of a computational tool. Current
+                  literature suggests that time complexity of matrix inversion
+                  is 2 or higher. This paper redesigns the Gauss Jordan
+                  algorithm for matrix inversion on a CUDA platform to exploit
+                  the large scale parallelization feature of a massively
+                  multithreaded GPU. The algorithm is tested for various types
+                  of matrices and the performance metrics are studied and
+                  compared with CPU based parallel methods. We show that the
+                  time complexity of matrix inversion scales as n as long as n2
+                  threads can be supported by the GPU.}
+}
+
+@inproceedings{gardner:2018,
+  author =       {Gardner, Jacob R and Pleiss, Geoff and Bindel, David and
+                  Weinberger, Kilian Q and Wilson, Andrew Gordon},
+  title =        {GPyTorch: Blackbox Matrix-Matrix Gaussian Process Inference
+                  with GPU Acceleration},
+  booktitle =    {Advances in Neural Information Processing Systems},
+  doi =          {10.48550/arXiv.1809.11165},
+  url =          {https://arxiv.org/abs/1809.11165},
+  year =         2018
+}
+
+@Article{cuneo:2024,
+  author =       {Cuneo, Braxton and Bailey, Mike},
+  title =        {Divergence Reduction in Monte Carlo Neutron Transport with
+                  On-GPU Asynchronous Scheduling},
+  year =         2024,
+  issue_date =   {January 2024},
+  publisher =    {Association for Computing Machinery},
+  address =      {New York, NY, USA},
+  volume =       34,
+  number =       1,
+  issn =         {1049-3301},
+  url =          {https://dl.acm.org/doi/10.1145/3626957},
+  doi =          {10.1145/3626957},
+  abstract =     {While Monte Carlo Neutron Transport (MCNT) is
+                  near-embarrasingly parallel, the effectively unpredictable
+                  lifetime of neutrons can lead to divergence when MCNT is
+                  evaluated on GPUs. Divergence is the phenomenon of adjacent
+                  threads in a warp executing different control flow paths; on
+                  GPUS, it reduces performance because each work group may only
+                  execute one path at a time. The process of Thread Data
+                  Remapping (TDR) resolves these discrepancies by moving data
+                  across hardware such that data in the same warp will be
+                  processed through similar paths. A common issue among prior
+                  implementations of TDR is the synchronous nature of its
+                  remapping and processing cycles, which exhaustively sort data
+                  produced by prior processing passes and exhaustively evaluate
+                  the sorted data. In another work, we defined a method of
+                  remapping data through an asynchronous scheduler which allows
+                  for work to be stored in shared memory and deferred
+                  arbitrarily until that work is a viable option for
+                  low-divergence evaluation. This article surveys a wider set of
+                  cases, with the goal of characterizing performance trends
+                  across a more comprehensive set of parameters. These
+                  parameters include cross sections of
+                  scattering/capturing/fission, use of implicit capture, source
+                  neutron counts, simulation time spans, and tuned memory
+                  allocations. Across these cases, we have recorded minimum and
+                  average execution times, as well as a heuristically tuned
+                  near-optimal memory allocation size for both synchronous and
+                  asynchronous scheduling. Across the collected data, it is
+                  shown that the asynchronous method is faster and more memory
+                  efficient in the majority of cases, and that it requires less
+                  tuning to achieve competitive performance.},
+  journal =      {ACM Trans. Model. Comput. Simul.},
+  month =        {jan},
+  articleno =    2,
+  numpages =     25,
+  keywords =     {Asynchronous, scheduling, divergence, GPU, GPGPU}
+}
+
+@inproceedings{bailey:1988,
+  author =       {Bailey, D.H. and Ferguson, H.R.P.},
+  booktitle =    {Supercomputing '88:Proceedings of the 1988 ACM/IEEE Conference
+                  on Supercomputing, Vol. I},
+  title =        {A Strassen-Newton algorithm for high-speed parallelizable
+                  matrix inversion},
+  year =         1988,
+  pages =        {419-424},
+  keywords =     {Costs;Concurrent computing;Arithmetic;Parallel processing},
+  doi =          {10.1109/SUPERC.1988.44680}
+}
+
+@Article{xuebin:2023,
+  author =       {Jin Xuebin and Chen Yewang and Fan Wentao and Zhang Yong and
+                  Du Jixiang},
+  title =        {Fast algorithm for parallel solving inversion of large scale
+                  small matrices based on GPU},
+  year =         2023,
+  issue_date =   {November 2023},
+  volume =       79,
+  number =       16,
+  issn =         {1573-0484},
+  url =          {https://link.springer.com/article/10.1007/s11227-023-05336-7},
+  doi =          {10.1007/s11227-023-05336-7},
+  abstract =     {Inverting a matrix is time-consuming, and many works focus on
+                  accelerating the inversion of a single large matrix by GPU.
+                  However, the problem of parallelizing the inversion of a large
+                  number of small matrices has received little attention. These
+                  problems are widely applied in computer science, including
+                  accelerating cryptographic algorithms and image processing
+                  algorithms. In this paper, we propose a Revised In-Place
+                  Inversion algorithm for inverting a large number of small
+                  matrices on the CUDA platform, which adopts a more refined
+                  parallelization scheme and outperforms other algorithms,
+                  achieving a speedup of up to 20.9572 times over the batch
+                  matrix inverse kernel in CUBLAS. Additionally, we found that
+                  there is an upper bound on the input data size for each GPU
+                  device, and the performance will degrade if the input data
+                  size is too large. Therefore, we propose the Saturation Size
+                  Curve based on this finding to divide matrices into batches
+                  and improve the algorithm performance. Experimental results
+                  show that this strategy increases the algorithm’s performance
+                  by 1.75 times and effectively alleviates the problem of
+                  performance degradation.},
+  journal =      {The Journal of Supercomputing},
+  month =        {May},
+  pages =        {18313-18339}
+}
+
+@article{steven:1987,
+  author =       {Althoen, Steven C. and McLaughlin, Renate},
+  title =        {Gauss-Jordan reduction: a brief history},
+  year =         1987,
+  issue_date =   {Feb. 1987},
+  publisher =    {Mathematical Association of America},
+  address =      {USA},
+  volume =       94,
+  number =       2,
+  issn =         {0002-9890},
+  url =          {https://www.jstor.org/stable/2322413},
+  doi =          {10.2307/2322413},
+  journal =      {American Mathematical Monthly},
+  month =        {feb},
+  pages =        {130–142},
+  numpages =     13
+}
+
+@inproceedings{cohn:2005,
+  author =       {Cohn, H. and Kleinberg, R. and Szegedy, B. and Umans, C.},
+  booktitle =    {46th Annual IEEE Symposium on Foundations of Computer Science
+                  (FOCS'05)},
+  title =        {Group-theoretic algorithms for matrix multiplication},
+  year =         2005,
+  pages =        {379-388},
+  keywords =     {Computer science;Standards development;Linear
+                  algebra;Matrices;Upper bound;Mathematics;Fourier
+                  transforms;Organizing},
+  doi =          {10.1109/SFCS.2005.39}
+}
+
+@Article{strassen:1969,
+  author =       {Volker Strassen},
+  title =        {Gaussian elimination is not optimal},
+  year =         1969,
+  month =        8,
+  volume =       13,
+  pages =        {354-356},
+  journal =      {Numerische Mathematik},
+  doi =          {10.1007/BF02165411}
+}
+
+@inproceedings{coppersmith:1981,
+  author =       {Coppersmith, D. and Winograd, S.},
+  booktitle =    {22nd Annual Symposium on Foundations of Computer Science (sfcs
+                  1981)},
+  title =        {On the asymptotic complexity of matrix multiplication},
+  year =         1981,
+  pages =        {82-90},
+  keywords =     {Arithmetic;Tensile stress;Equations},
+  doi =          {10.1109/SFCS.1981.27}
+}
+
+@article{dimov:1998,
+  title =        {A new iterative Monte Carlo approach for inverse matrix
+                  problem},
+  journal =      {Journal of Computational and Applied Mathematics},
+  volume =       92,
+  number =       1,
+  pages =        {15-35},
+  year =         1998,
+  issn =         {0377-0427},
+  doi =          {10.1016/S0377-0427(98)00043-0},
+  url =
+                  {https://www.sciencedirect.com/science/article/pii/S0377042798000430},
+  author =       {I.T. Dimov and T.T. Dimov and T.V. Gurov},
+  keywords =     {Monte Carlo algorithms, Iterative methods, Markov chain,
+                  Inverse matrix problem},
+  abstract =     {A new approach of iterative Monte Carlo algorithms for the
+                  well-known inverse matrix problem is presented and studied.
+                  The algorithms are based on a special techniques of iteration
+                  parameter choice, which allows to control the convergence of
+                  the algorithm for any column (row) of the matrix using
+                  different relaxation parameters. The choice of these
+                  parameters is controlled by a posteriori criteria for every
+                  Monte Carlo iteration. The presented Monte Carlo algorithms
+                  are implemented on a SUN Sparkstation. Numerical tests are
+                  performed for matrices of moderate in order to show how work
+                  the algorithms. The algorithms under consideration are well
+                  parallelized.}
+}
+
+@inproceedings{misra:2018,
+  author =       {Misra, Chandan and Haldar, Swastik and Bhattacharya,
+                  Sourangshu and Ghosh, Soumya K.},
+  title =        {SPIN: A Fast and Scalable Matrix Inversion Method in Apache
+                  Spark},
+  year =         2018,
+  isbn =         9781450363723,
+  publisher =    {Association for Computing Machinery},
+  address =      {New York, NY, USA},
+  doi =          {10.1145/3154273.3154300},
+  abstract =     {The growth of big data in domains such as Earth Sciences,
+                  Social Networks, Physical Sciences, etc. has lead to an
+                  immense need for efficient and scalable linear algebra
+                  operations, e.g. Matrix inversion. Existing methods for
+                  efficient and distributed matrix inversion using big data
+                  platforms rely on LU decomposition based block-recursive
+                  algorithms. However, these algorithms are complex and require
+                  a lot of side calculations, e.g. matrix multiplication, at
+                  various levels of recursion. In this paper, we propose a
+                  different scheme based on Strassen's matrix inversion
+                  algorithm (mentioned in Strassen's original paper in 1969),
+                  which uses far fewer operations at each level of recursion. We
+                  implement the proposed algorithm, and through extensive
+                  experimentation, show that it is more efficient than the state
+                  of the art methods. Furthermore, we provide a detailed
+                  theoretical analysis of the proposed algorithm, and derive
+                  theoretical running times which match closely with the
+                  empirically observed wall clock running times, thus explaining
+                  the U-shaped behaviour w.r.t. block-sizes.},
+  booktitle =    {Proceedings of the 19th International Conference on
+                  Distributed Computing and Networking},
+  articleno =    16,
+  numpages =     10,
+  keywords =     {Apache Spark, Linear Algebra, Matrix Inversion, Strassen's
+                  Algorithm},
+  location =     {Varanasi, India},
+  series =       {ICDCN '18}
+}
+
+@InProceedings{agullo:2011,
+  author =       "Agullo, Emmanuel and Bouwmeester, Henricus and Dongarra, Jack
+                  and Kurzak, Jakub and Langou, Julien and Rosenberg, Lee",
+  editor =       "Palma, Jos{\'e} M. Laginha M. and Dayd{\'e}, Michel and
+                  Marques, Osni and Lopes, Jo{\~a}o Correia",
+  title =        "Towards an Efficient Tile Matrix Inversion of Symmetric
+                  Positive Definite Matrices on Multicore Architectures",
+  booktitle =    "High Performance Computing for Computational Science -- VECPAR
+                  2010",
+  year =         2011,
+  publisher =    "Springer Berlin Heidelberg",
+  address =      "Berlin, Heidelberg",
+  pages =        "129--138",
+  abstract =     "The algorithms in the current sequential numerical linear
+                  algebra libraries (e.g. LAPACK) do not parallelize well on
+                  multicore architectures. A new family of algorithms, the tile
+                  algorithms, has recently been introduced. Previous research
+                  has shown that it is possible to write efficient and scalable
+                  tile algorithms for performing a Cholesky factorization, a
+                  (pseudo) LU factorization, a QR factorization, and computing
+                  the inverse of a symmetric positive definite matrix. In this
+                  extended abstract, we revisit the computation of the inverse
+                  of a symmetric positive definite matrix. We observe that,
+                  using a dynamic task scheduler, it is relatively painless to
+                  translate existing LAPACK code to obtain a
+                  ready-to-be-executed tile algorithm. However we demonstrate
+                  that, for some variants, non trivial compiler techniques
+                  (array renaming, loop reversal and pipelining) need then to be
+                  applied to further increase the parallelism of the
+                  application. We present preliminary experimental results.",
+  isbn =         "978-3-642-19328-6",
+  doi =          {10.1007/978-3-642-19328-6_14}
+}
+
+@inbook{press:2007,
+  author =       {William H. Press and Saul A. Teukolsky and William T.
+                  Vetterling and Brian P. Flannery},
+  booktitle =    {Numerical Recipes: The Art of Scientific Computing},
+  publisher =    {Cambridge University Press},
+  address =      {32 Avenue of the Americas, New York, NY 10013-2473, USA},
+  year =         2007,
+  edition =      3,
+  isbn =         {978-0-521-88068-8},
+  title =        {Solution of Linear Algebraic Equations},
+  chapter =      2,
+  pages =        {37-109}
+}
+
+@inbook{anton:2014,
+  author =       {Howard Anton and Chris Rosses},
+  booktitle =    {Elementary Linear Algebra},
+  publisher =    {John Wiley \& Sons, Inc.},
+  address =      {111 River Street, Hoboken, NJ 07030-5774, USA},
+  year =         2014,
+  edition =      11,
+  isbn =         {978-1-118-43441-3},
+  title =        {Applications of Linear Algebra},
+  chapter =      10,
+  pages =        {527-713}
+}
+
+@Article{dasgupta:2013,
+  author =       {Debabrata DasGupta},
+  title =        {In-Place Matrix Inversion by Modified Gauss-Jordan Algorithm},
+  journal =      {Applied Mathematics},
+  volume =       4,
+  number =       10,
+  pages =        {1392-1396},
+  issue_date =   {Oct. 2013},
+  month =        9,
+  year =         2013,
+  doi =          {10.4236/am.2013.410188}
+}
+
+@book{nguyen:2007,
+  author =       {Nguyen, Hubert},
+  title =        {Gpu gems 3},
+  year =         2007,
+  isbn =         9780321545428,
+  publisher =    {Addison-Wesley Professional},
+  edition =      {First},
+  abstract =     {“The GPU Gems series features a collection of the most
+                  essential algorithms required by Next-Generation 3D Engines.”
+                  -Martin Mittring, Lead Graphics Programmer, Crytek This third
+                  volume of the best-selling GPU Gems series provides a snapshot
+                  of today's latest Graphics Processing Unit (GPU) programming
+                  techniques. The programmability of modern GPUs allows
+                  developers to not only distinguish themselves from one another
+                  but also to use this awesome processing power for non-graphics
+                  applications, such as physics simulation, financial analysis,
+                  and even virus detection-particularly with the CUDA
+                  architecture. Graphics remains the leading application for
+                  GPUs, and readers will find that the latest algorithms create
+                  ultra-realistic characters, better lighting, and
+                  post-rendering compositing effects.Major topics include
+                  Geometry Light and Shadows Rendering Image Effects Physics
+                  Simulation GPU Computing Contributors are from the following
+                  corporations and universities:3Dfacto Adobe Systems Apple
+                  Budapest University of Technology and Economics CGGVeritas The
+                  Chinese University of Hong Kong Cornell University Crytek
+                  Czech Technical University in Prague Dartmouth College Digital
+                  Illusions Creative Entertainment Eindhoven University of
+                  Technology Electronic Arts Havok Helsinki University of
+                  Technology Imperial College London Infinity Ward Juniper
+                  Networks LaBRI\"{\i} INRIA, University of Bordeaux mental
+                  images Microsoft Research Move Interactive NCsoft Corporation
+                  NVIDIA Corporation Perpetual Entertainment Playlogic Game
+                  Factory Polytime Rainbow Studios SEGA Corporation UFRGS
+                  (Brazil) Ulm University University of California, Davis
+                  University of Central Florida University of Copenhagen
+                  University of Girona University of Illinois at
+                  Urbana-Champaign University of North Carolina Chapel Hill
+                  University of Tokyo University of WaterlooSection Editors
+                  include NVIDIA engineers: Cyril Zeller, Evan Hart, Ignacio
+                  Casta\~{n}o, Kevin Bjorke, Kevin Myers, and Nolan
+                  Goodnight.The accompanying DVD includes complementary examples
+                  and sample programs.}
+}
+
+% Local Variables:
+% bibtex-dialect: biblatex
+% comment-start: "%"
+% End:

@@ -13,8 +13,13 @@
       in
       {
         packages = rec {
-          presentation = pkgs.callPackage ./Presentation/default.nix { };
-          default = presentation;
+          presentation = pkgs.callPackage ./Presentation { };
+          proposal = pkgs.callPackage ./Proposal { };
+          default = pkgs.buildEnv {
+            name = "tdr-inverse-materials";
+            paths = [ presentation proposal ];
+          };
+
         };
 
         devShells.default = pkgs.mkShell.override { stdenv = pkgs.stdenvNoCC; } {
