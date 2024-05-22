@@ -46,7 +46,7 @@
 **** Define fonts
 #+LATEX_HEADER: \newfontfamily\headingfont{Libre Baskerville}
 #+LATEX_HEADER: \setmainfont{DejaVuSerif}
-#+LATEX_HEADER: \setmathfont{DejaVu Math TeX Gyre}
+#+LATEX_HEADER: \setmathfont{TeX Gyre DejaVu Math}
 //#+LATEX_HEADER: \setmathfont{Fira Math}[range={\infty}] % Steal some symbols
 #+LATEX_HEADER: \AtBeginDocument{\renewcommand{\setminus}{\mathbin{\backslash}}} % Replace setminus with nice backslash
 **** Set fonts
