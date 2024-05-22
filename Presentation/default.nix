@@ -28,14 +28,14 @@ stdenvNoCC.mkDerivation {
   '';
 
   buildPhase = ''
-    emacs -q -nl --script org2tex.el Final_Pres.org
-    latexmk -xelatex Final_Pres.tex
+    emacs -q -nl --script org2tex.el Presentation.org
+    latexmk -xelatex Presentation.tex
   '';
 
   installPhase = ''
     echo $HOME
     mkdir -p $out
-    cp Final_Pres.pdf $out
+    cp Presentation.pdf $out
   '';
 
   meta = with lib; {
