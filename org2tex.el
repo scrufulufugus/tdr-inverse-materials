@@ -16,13 +16,13 @@
 
 ; Getting org-ref
 ;; MELPA setup and initial packages
-(require 'package)
+;(require 'package)
 (setq package-check-signature nil)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
-(unless package-archive-contents   (package-refresh-contents))
-(package-install 'use-package)
-(package-install 'org)
+;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;(package-initialize)
+;(unless package-archive-contents   (package-refresh-contents))
+;(package-install 'use-package)
+;(package-install 'org)
 
 (dolist (package '(use-package))
    (unless (package-installed-p package)
