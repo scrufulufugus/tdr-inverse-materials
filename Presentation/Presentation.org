@@ -10,7 +10,7 @@
 #+DESCRIPTION:
 #+KEYWORDS:
 #+LANGUAGE:  en
-#+OPTIONS:   H:2 num:t toc:2 \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   H:2 num:t toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
 #+INFOJS_OPT: view:nil toc:2 ltoc:t mouse:underline buttons:0 path:https://orgmode.org/org-info.js
 #+EXPORT_SELECT_TAGS: export
@@ -63,9 +63,6 @@
 #+LATEX_HEADER: \usepackage{ccicons}
 #+LATEX_HEADER: \usepackage[margin=3pt,font=scriptsize,labelfont=bf]{caption}
 
-*** Animate
-#+LATEX_HEADER: \usepackage{animate}
-
 *** SVG
 #+LATEX_HEADER: \usepackage{svg}
 
@@ -82,13 +79,19 @@
 
 Show back-references to in-text citations
 #+LATEX_HEADER: \usepackage[backref=true]{biblatex}
+#+BEGIN_COMMENT
 Change color of citations
 #+LATEX_HEADER: \usepackage{xcolor}
 #+LATEX_HEADER: \hypersetup{colorlinks=true,allcolors=black,citecolor=teal,linkcolor=darkgray}
+#+END_COMMENT
 Make in-text citations smaller
 #+LATEX_HEADER_EXTRA: \renewcommand*{\citesetup}{\biburlsetup\small\frenchspacing}
 
 *** Environments
+**** Separated Matrices
+
+#+LATEX_HEADER: \usepackage{nicematrix}
+
 **** Angled Small Vector
 #+LATEX_HEADER: \newenvironment{asvector}{\left\langle\begin{smallmatrix}}{\end{smallmatrix}\right\rangle}
 **** Angled Vector
@@ -109,6 +112,67 @@ Make in-text citations smaller
 * Gauss-Jordan
 
 * Class Activity
+
+** Matrix Example
+
+\begin{align*}
+    M & = \begin{bmatrix} 1 & 0 & 1 \\ 0 & 2 & 1 \\ 1 & 1 & 1 \end{bmatrix} \\
+\end{align*}
+
+** Solution
+
+\begin{align*}
+    \begin{bNiceArray}{ccc|ccc}
+        1 & 0 & 1 & 1 & 0 & 0 \\
+        0 & 2 & 1 & 0 & 1 & 0 \\
+        1 & 1 & 1 & 0 & 0 & 1
+    \end{bNiceArray}
+    & \xrightarrow{R_0 / 1} &
+    \begin{bNiceArray}{ccc|ccc}
+        \symbf{1} & \symbf{0} & \symbf{1} & \symbf{1} & \symbf{0} & \symbf{0} \\
+        0 & 2 & 1 & 0 & 1 & 0 \\
+        1 & 1 & 1 & 0 & 0 & 1
+    \end{bNiceArray}
+    & \xrightarrow[R_2 - 1 R_0]{R_1 - 0R_0} &
+    \begin{bNiceArray}{ccc|ccc}
+        1 & 0 & 1 & 1 & 0 & 0 \\
+        \symbf{0} & \symbf{2} & \symbf{1} & \symbf{0} & \symbf{1} & \symbf{0} \\
+        \symbf{0} & \symbf{1} & \symbf{0} & \symbf{-1} & \symbf{0} & \symbf{1}
+    \end{bNiceArray} \\
+    & \xrightarrow{R_1 / 2} &
+    \begin{bNiceArray}{ccc|ccc}
+        1 & 0 & 1 & 1 & 0 & 0 \\
+        \symbf{0} & \symbf{1} & \symbf{\frac{1}{2}} & \symbf{0} & \symbf{\frac{1}{2}} & \symbf{0} \\
+        0 & 1 & 0 & -1 & 0 & 1
+    \end{bNiceArray}
+    & \xrightarrow[R_2 - 1 R_1]{R_0 - 0R_1} &
+    \begin{bNiceArray}{ccc|ccc}
+        \symbf{1} & \symbf{0} & \symbf{1} & \symbf{1} & \symbf{0} & \symbf{0} \\
+        0 & 1 & \frac{1}{2} & 0 & \frac{1}{2} & 0 \\
+        \symbf{0} & \symbf{0} & \symbf{-\frac{1}{2}} & -\symbf{1} & \symbf{-\frac{1}{2}} & \symbf{1}
+    \end{bNiceArray} \\
+    & \xrightarrow{R_2 / -\frac{1}{2}} &
+    \begin{bNiceArray}{ccc|ccc}
+        1 & 0 & 1 & 1 & 0 & 0 \\
+        0 & 1 & \frac{1}{2} & 0 & \frac{1}{2} & 0 \\
+        \symbf{0} & \symbf{0} & \symbf{1} & \symbf{2} & \symbf{1} & \symbf{-2}
+    \end{bNiceArray}
+    & \xrightarrow[R_1 - \frac{1}{2} R_2]{R_0 - 1R_2} &
+    \begin{bNiceArray}{ccc|ccc}
+        \symbf{1} & \symbf{0} & \symbf{0} & \symbf{-1} & \symbf{-1} & \symbf{2} \\
+        \symbf{0} & \symbf{1} & \symbf{0} & \symbf{-1} & \symbf{0} & \symbf{1} \\
+        0 & 0 & 1 & 2 & 1 & -2
+    \end{bNiceArray}
+\end{align*}
+
+* GPU Programming
+
+** SIMD
+
+** CUDA
+
+* Thread-Data Remapping
+
 * Conclusion
 :PROPERTIES:
 :BEAMER_env: ignoreheading
