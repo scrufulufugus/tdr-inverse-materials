@@ -13,6 +13,8 @@
 #+OPTIONS:   H:2 num:t toc:2 \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
 #+INFOJS_OPT: view:nil toc:2 ltoc:t mouse:underline buttons:0 path:https://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
 #+HTML_LINK_UP:
 #+HTML_LINK_HOME:
 
@@ -23,7 +25,13 @@
 ** Emacs Config
 #+startup: beamer show2levels
 
-#+begin_src emacs-lisp :exports results :results none :eval export
+#+BEGIN_SRC emacs-lisp :exports none :eval always
+(require 'ox-extra)
+(ox-extras-activate '(ignore-headlines))
+;(setq org-latex-with-hyperref-template nil) ;; stop org adding hypersetup{author..} to latex export
+#+END_SRC
+
+#+begin_src emacs-lisp :exports none :eval always
   (make-variable-buffer-local 'org-latex-title-command)
   (setq org-latex-title-command (concat
      "\\begin{frame}\n"
