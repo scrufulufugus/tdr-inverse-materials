@@ -15,8 +15,6 @@
 #+INFOJS_OPT: view:nil toc:2 ltoc:t mouse:underline buttons:0 path:https://orgmode.org/org-info.js
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
-#+HTML_LINK_UP:
-#+HTML_LINK_HOME:
 
 #+LaTeX_CLASS: beamer
 #+LaTeX_CLASS_OPTIONS: [aspectratio=169,t]
@@ -29,27 +27,29 @@
 #+startup: beamer show2levels
 
 #+BEGIN_SRC emacs-lisp :exports none :eval always
-(require 'ox-extra)
-(ox-extras-activate '(ignore-headlines))
-;(setq org-latex-with-hyperref-template nil) ;; stop org adding hypersetup{author..} to latex export
-#+END_SRC
+  (require 'ox-extra)
+  (ox-extras-activate '(ignore-headlines))
 
-#+begin_src emacs-lisp :exports none :eval always
+  ;; Title page fix
   (make-variable-buffer-local 'org-latex-title-command)
   (setq org-latex-title-command (concat
      "\\begin{frame}\n"
      "\\maketitle\n"
      "\\end{frame}\n"
   ))
+  ;; Use listings for code highlighting
   (setq org-latex-listings t)
+  ;; Don't add <center> tags to images I like to do that myself
   (setq org-latex-images-centered nil)
-  ;; export snippet translations
+  ;; export snippet translations (e.g. @@b:\tex@@)
   (add-to-list 'org-export-snippet-translation-alist
              '("b" . "beamer"))
 #+end_src
 
 ** LaTeX Config
+
 *** Set Beamer Theme
+
 #+BEAMER_THEME: focus
 #+BEAMER_HEADER: \definecolor{main}{HTML}{93361f}
 #+BEAMER_HEADER: \definecolor{background}{HTML}{D0D0D0}
@@ -57,20 +57,25 @@
 #+BEAMER_HEADER: \definecolor{forestgreen}{HTML}{228b22}
 
 *** Use Listings instead of verbatim
+
 #+LATEX_HEADER: \usepackage{listings}
 
 *** Fix Captions
+
 #+LATEX_HEADER: \usepackage{ccicons}
 #+LATEX_HEADER: \usepackage[margin=3pt,font=scriptsize,labelfont=bf]{caption}
 
-*** SVG
+*** SVG Support
+
 #+LATEX_HEADER: \usepackage{svg}
 
 *** Define abs
+
 #+LATEX_HEADER: \usepackage{mathtools}
 #+LATEX_HEADER: \DeclarePairedDelimiter\abs{\lvert}{\rvert} % ABS: abs{}
 
 *** Configure fonts
+
 #+BEAMER_HEADER: \setmathfont{Fira Math}
 #+BEAMER_HEADER: \setmathfont{TeX Gyre DejaVu Math}[range={\vysmwhtcircle,\times,\vdots,\star}]
 /#+BEAMER_HEADER: \setmonofont{Hack}
@@ -79,26 +84,23 @@
 
 Show back-references to in-text citations
 #+LATEX_HEADER: \usepackage[backref=true]{biblatex}
-#+BEGIN_COMMENT
-Change color of citations
-#+LATEX_HEADER: \usepackage{xcolor}
-#+LATEX_HEADER: \hypersetup{colorlinks=true,allcolors=black,citecolor=teal,linkcolor=darkgray}
-#+END_COMMENT
+
 Make in-text citations smaller
 #+LATEX_HEADER_EXTRA: \renewcommand*{\citesetup}{\biburlsetup\small\frenchspacing}
 
 *** Environments
-**** Separated Matrices
 
+Separated Matrices
 #+LATEX_HEADER: \usepackage{nicematrix}
 
-**** Angled Small Vector
+Angled Small Vector
 #+LATEX_HEADER: \newenvironment{asvector}{\left\langle\begin{smallmatrix}}{\end{smallmatrix}\right\rangle}
-**** Angled Vector
-#+LATEX_HEADER: \newenvironment{avector}{\left\langle\begin{matrix}}{\end{matrix}\right\rangle}
-**** Tight Align
-#+LATEX_HEADER: \newenvironment{talign*}{\centering $\displaystyle\begin{aligned}}{\end{aligned}$\par}
 
+Angled Vector
+#+LATEX_HEADER: \newenvironment{avector}{\left\langle\begin{matrix}}{\end{matrix}\right\rangle}
+
+Tight Align
+#+LATEX_HEADER: \newenvironment{talign*}{\centering $\displaystyle\begin{aligned}}{\end{aligned}$\par}
 
 * Introduction to Inverses
 
