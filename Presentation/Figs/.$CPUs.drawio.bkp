@@ -1,0 +1,43 @@
+<mxfile host="Electron" modified="2024-05-23T17:54:50.803Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="S-rA1ZWw5jCeLrtn3CiR" version="24.2.5" type="device">
+  <diagram id="bPtiM-cBsUfIetChZ_1X" name="Page-1">
+    <mxGraphModel dx="1713" dy="1015" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="VLUZ75N3-F3q_jsqpljg-1" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fontFamily=Courier New;fontSize=24;fillColor=#D0D0D0;" parent="1" vertex="1">
+          <mxGeometry x="240" y="320" width="380" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="VLUZ75N3-F3q_jsqpljg-2" value="Core" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#FFCCCC;fontFamily=Courier New;fontSize=24;" parent="1" vertex="1">
+          <mxGeometry x="260" y="340" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="VLUZ75N3-F3q_jsqpljg-3" value="Core" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#FFCCCC;fontFamily=Courier New;fontSize=24;" parent="1" vertex="1">
+          <mxGeometry x="380" y="340" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="VLUZ75N3-F3q_jsqpljg-4" value="Core" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#FFCCCC;fontFamily=Courier New;fontSize=24;" parent="1" vertex="1">
+          <mxGeometry x="500" y="340" width="100" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="VLUZ75N3-F3q_jsqpljg-5" value="L1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#8ff0a4;fontFamily=Courier New;fontSize=24;" parent="1" vertex="1">
+          <mxGeometry x="260" y="450" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="VLUZ75N3-F3q_jsqpljg-6" value="L1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#8ff0a4;fontFamily=Courier New;fontSize=24;" parent="1" vertex="1">
+          <mxGeometry x="380" y="450" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="VLUZ75N3-F3q_jsqpljg-7" value="L1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#8ff0a4;fontFamily=Courier New;fontSize=24;" parent="1" vertex="1">
+          <mxGeometry x="500" y="450" width="100" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="VLUZ75N3-F3q_jsqpljg-8" value="L2" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#99c1f1;fontFamily=Courier New;fontSize=24;" parent="1" vertex="1">
+          <mxGeometry x="260" y="480" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="VLUZ75N3-F3q_jsqpljg-9" value="L2" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#99c1f1;fontFamily=Courier New;fontSize=24;" parent="1" vertex="1">
+          <mxGeometry x="380" y="480" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="VLUZ75N3-F3q_jsqpljg-10" value="L2" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#99c1f1;fontFamily=Courier New;fontSize=24;" parent="1" vertex="1">
+          <mxGeometry x="500" y="480" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="VLUZ75N3-F3q_jsqpljg-11" value="L3" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=3;fillColor=#E5CCFF;fontFamily=Courier New;fontSize=24;" parent="1" vertex="1">
+          <mxGeometry x="260" y="520" width="340" height="160" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

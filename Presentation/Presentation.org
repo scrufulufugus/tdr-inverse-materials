@@ -137,6 +137,11 @@ The _identity_ of an operation $\star$ and set $G$ is some value $\symbfit{i} \i
 
 - Matrix multiplication is generally not commutative ($AB \neq BA$).
 
+*** The Rest
+:PROPERTIES:
+    :BEAMER_env: ignoreheading
+:END:
+
 ** Uses
 
 \begin{align*}
@@ -171,7 +176,7 @@ $A^{-1} = \frac{1}{\det(A)} \text{adj}(A)$
 
 *** The Rest
 :PROPERTIES:
-:BEAMER_env: ignoreheading
+    :BEAMER_env: ignoreheading
 :END:
 
 - If $\det(A)$ then the inverse is undefined.
@@ -240,15 +245,39 @@ $A^{-1} = \frac{1}{\det(A)} \text{adj}(A)$
 
 * GPU Programming
 
-** SM Architecture
+** CPU Architecture
+
+#+LATEX: \begin{center}
+#+ATTR_BEAMER: :overlay <1>
+#+ATTR_LATEX: :height 0.70\textheight
+[[./Figs/CPU.drawio.png]]
+#+ATTR_BEAMER: :overlay <2>
+#+ATTR_LATEX: :height 0.70\textheight
+[[./Figs/CPUs.drawio.png]]
+#+ATTR_BEAMER: :overlay <3>
+#+ATTR_LATEX: :height 0.70\textheight
+[[./Figs/CPUs_core_layout.drawio.png]]
+#+LATEX: \end{center}
+
+** SIMT Architecture
+
+#+LATEX: \begin{center}
+#+ATTR_BEAMER: :overlay <1>
+#+ATTR_LATEX: :height 0.70\textheight
+[[./Figs/gpu_overview.png]]
+#+LATEX: \end{center}
 
 ** CUDA
 
-* Thread-Data Remapping
+** Thread-Data Remapping
+
+* Results
+
+** Results
 
 * Conclusion
 :PROPERTIES:
-:BEAMER_env: ignoreheading
+    :BEAMER_env: ignoreheading
 :END:
 
 ** References
