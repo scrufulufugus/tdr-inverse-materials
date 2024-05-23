@@ -32,30 +32,24 @@
    :ensure t)
 
 (require 'ox-latex)
-;; Got org-ref
-;(add-to-list 'org-latex-classes
-;             '("wgtex" "\\documentclass{wgtex}"
-;               ("\\part{%s}" . "\\part*{%s}")
-;               ("\\chapter{%s}" . "\\chapter*{%s}")
-;               ("\\section{%s}" . "\\section*{%s}")
-;               ("\\subsection{%s}" . "\\subsection*{%s}")
-;               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-;               ("\\paragraph{%s}" . "\\paragraph*{%s}")
-;               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-;(setq org-latex-packages-alist 'nil)
-;(setq org-latex-minted-options 'nil)
-;(setq org-latex-listings 'minted)
-;(setq org-latex-default-packages-alist
-;  '(
-;    (""     "graphicx"  t)
-;    (""     "lipsum"  t)
-;;; Extra
-;;;    (""     "minted"   t)
-;    (""     "rotating"  nil)
-;    ("normalem" "ulem"  t)
-;    (""     "mathtools"   t)
-;    ))
 
+(require 'ox-extra)
+(ox-extras-activate '(ignore-headlines))
+
+;; Title page fix
+(make-variable-buffer-local 'org-latex-title-command)
+(setq org-latex-title-command (concat
+   "\\begin{frame}\n"
+   "\\maketitle\n"
+   "\\end{frame}\n"
+))
+;; Use listings for code highlighting
+(setq org-latex-listings t)
+;; Don't add <center> tags to images I like to do that myself
+(setq org-latex-images-centered nil)
+;; export snippet translations (e.g. @@b:\tex@@)
+(add-to-list 'org-export-snippet-translation-alist
+  '("b" . "beamer"))
 
 ;; Define an interactive function for easy testing
 (defun org-beamer-export-to-pdf-directory (files)
