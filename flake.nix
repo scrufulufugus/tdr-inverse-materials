@@ -12,7 +12,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
         tex = pkgs.texlive.combined.scheme-full;
         emacsWith = ((pkgs.emacsPackagesFor pkgs.emacs).emacsWithPackages (
-          epkgs: with epkgs; [ use-package org org-ref ]
+          epkgs: with epkgs; [ use-package org org-ref org-contrib ]
         ));
       in
       {
