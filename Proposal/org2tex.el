@@ -55,7 +55,7 @@
 ;;     ("normalem" "ulem"  t)
 ;;     (""     "mathtools"   t)
 ;;     ))
-
+(setq org-latex-pdf-process '("latexmk -shell-escape -xelatex %f"))
 
 ;; Define an interactive function for easy testing
 (defun org-beamer-export-to-pdf-directory (files)
