@@ -250,25 +250,78 @@ $A^{-1} = \frac{1}{\det(A)} \text{adj}(A)$
 
 ** CPU Architecture
 
+*** Diagram
+:PROPERTIES:
+    :BEAMER_col: 0.50
+:END:
+
 #+LATEX: \begin{center}
 #+ATTR_BEAMER: :overlay <1>
 #+ATTR_LATEX: :height 0.70\textheight
 [[./Figs/CPU.drawio.svg]]
 #+ATTR_BEAMER: :overlay <2>
 #+ATTR_LATEX: :height 0.70\textheight
-[[./Figs/CPUs.drawio.svg]]
+[[./Figs/CPU_core_layout.drawio.svg]]
 #+ATTR_BEAMER: :overlay <3>
 #+ATTR_LATEX: :height 0.70\textheight
 [[./Figs/CPUs_core_layout.drawio.svg]]
 #+LATEX: \end{center}
 
+*** Text
+:PROPERTIES:
+    :BEAMER_col: 0.50
+:END:
+
+#+ATTR_BEAMER: :overlay <only@1>
+- Core
+  - Processing unit
+- L1 L2 L3
+  - Caches for storing work
+#+ATTR_BEAMER: :overlay <2->
+- Registers
+  - Store localized data including the fetched instruction
+- Control Unit (CU)
+  - Decodes instruction and sends to appropriate logic unit
+- Arithmetic Logic Unit (ALU) / Floating Point Unit (FPU)
+  - Executes given instruction
+#+ATTR_BEAMER: :overlay <3->
+- Each core has its own registers and control logic
+
 ** SIMT Architecture
+
+*** Diagram
+:PROPERTIES:
+    :BEAMER_col: 0.60
+:END:
 
 #+LATEX: \begin{center}
 #+ATTR_BEAMER: :overlay <1>
-#+ATTR_LATEX: :height 0.70\textheight
-[[./Figs/gpu_overview.png]]
+#+ATTR_LATEX: :height 0.65\textheight
+[[./Figs/gpu_overview_high.svg]]
+#+ATTR_BEAMER: :overlay <2>
+#+ATTR_LATEX: :height 0.65\textheight
+[[./Figs/gpu_overview.svg]]
+#+ATTR_BEAMER: :overlay <3>
+#+ATTR_LATEX: :height 0.65\textheight
+[[./Figs/gpu_proc_overview.svg]]
 #+LATEX: \end{center}
+
+*** Text
+:PROPERTIES:
+    :BEAMER_col: 0.40
+:END:
+
+#+ATTR_BEAMER: :overlay <1->
+- Multiprocessor (MP)
+  - A "core" that handles simultaneous execution of a vector of tasks
+#+ATTR_BEAMER: :overlay <2->
+- Scalar processor (SP)
+  - Executes a single scalar component
+#+ATTR_BEAMER: :overlay <3->
+- Warp
+  - Group of SPs in a MP that execute in lockstep
+  - Warps share registers; including the program counter
+
 
 ** CUDA
 
