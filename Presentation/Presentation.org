@@ -69,6 +69,9 @@
 
 #+LATEX_HEADER: \usepackage{svg}
 
+Make SVGs support overlays
+#+LATEX_HEADER: \renewcommand<>{\includesvg}[2][]{\only#3{\beameroriginal\includesvg[#1]{#2}}}
+
 *** Define abs
 
 #+LATEX_HEADER: \usepackage{mathtools}
@@ -250,13 +253,13 @@ $A^{-1} = \frac{1}{\det(A)} \text{adj}(A)$
 #+LATEX: \begin{center}
 #+ATTR_BEAMER: :overlay <1>
 #+ATTR_LATEX: :height 0.70\textheight
-[[./Figs/CPU.drawio.png]]
+[[./Figs/CPU.drawio.svg]]
 #+ATTR_BEAMER: :overlay <2>
 #+ATTR_LATEX: :height 0.70\textheight
-[[./Figs/CPUs.drawio.png]]
+[[./Figs/CPUs.drawio.svg]]
 #+ATTR_BEAMER: :overlay <3>
 #+ATTR_LATEX: :height 0.70\textheight
-[[./Figs/CPUs_core_layout.drawio.png]]
+[[./Figs/CPUs_core_layout.drawio.svg]]
 #+LATEX: \end{center}
 
 ** SIMT Architecture
