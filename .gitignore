@@ -3,6 +3,9 @@
 .direnv/
 result
 
+# Drawio
+.$*
+
 # TeX
 
 ## Core latex/pdflatex auxiliary files:
