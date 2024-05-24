@@ -24,7 +24,7 @@ jobs:
         uses: DeterminateSystems/magic-nix-cache-action@main
 
       - name: nix build
-        run: nix build -o result
+        run: nix --print-build-logs build -o result
 
       - name: Copy results
         run: |
