@@ -25,7 +25,7 @@ stdenvNoCC.mkDerivation {
     # Fixes `Fontconfig error: no writable cache directories`
     export XDG_CACHE_HOME="$(mktemp -d)"
     emacs -q -nl --script org2tex.el Proposal.org
-    latexmk -xelatex Proposal.tex
+    latexmk -shell-escape -xelatex Proposal.tex
   '';
 
   installPhase = ''

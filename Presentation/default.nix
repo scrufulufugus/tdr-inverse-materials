@@ -3,6 +3,7 @@
   lib,
   emacs,
   tex,
+  inkscape,
   ...
 }:
 
@@ -15,6 +16,7 @@ stdenvNoCC.mkDerivation {
   buildInputs = [
     emacs
     tex
+    inkscape
   ];
 
   preBuild = ''
@@ -24,8 +26,12 @@ stdenvNoCC.mkDerivation {
   buildPhase = ''
     # Fixes `Fontconfig error: no writable cache directories`
     export XDG_CACHE_HOME="$(mktemp -d)"
+    # Needed for inkscape
+    export XDG_DATA_HOME="$(mktemp -d)"
+    export XDG_CONFIG_HOME="$(mktemp -d)"
+
     emacs -q -nl --script org2tex.el Presentation.org
-    latexmk -xelatex Presentation.tex
+    latexmk -shell-escape -xelatex Presentation.tex
   '';
 
   installPhase = ''
