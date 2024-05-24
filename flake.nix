@@ -17,7 +17,11 @@
       in
       {
         packages = rec {
-          presentation = pkgs.callPackage ./Presentation { tex = tex; emacs = emacsWith; };
+          presentation = pkgs.callPackage ./Presentation {
+            tex = tex;
+            emacs = emacsWith;
+            pygments = pkgs.python311Packages.pygments;
+          };
           proposal = pkgs.callPackage ./Proposal { tex = tex; emacs = emacsWith; };
           default = pkgs.buildEnv {
             name = "tdr-inverse-materials";
@@ -27,7 +31,7 @@
         };
 
         devShells.default = pkgs.mkShell.override { stdenv = pkgs.stdenvNoCC; } {
-          packages = with pkgs; [ texlive.combined.scheme-full ];
+          packages = with pkgs; [ texlive.combined.scheme-full python311Packages.pygments ];
         };
       });
 }

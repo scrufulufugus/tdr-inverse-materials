@@ -4,6 +4,7 @@
   emacs,
   tex,
   inkscape,
+  pygments,
   ...
 }:
 

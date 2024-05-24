@@ -43,8 +43,8 @@
    "\\maketitle\n"
    "\\end{frame}\n"
 ))
-;; Use listings for code highlighting
-(setq org-latex-listings t)
+;; Use minted for code highlighting
+(setq org-latex-src-block-backend 'minted)
 ;; Don't add <center> tags to images I like to do that myself
 (setq org-latex-images-centered nil)
 ;; export snippet translations (e.g. @@b:\tex@@)
