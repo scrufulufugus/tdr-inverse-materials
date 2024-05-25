@@ -72,10 +72,15 @@
 Make SVGs support overlays
 #+LATEX_HEADER: \renewcommand<>{\includesvg}[2][]{\only#3{\beameroriginal\includesvg[#1]{#2}}}
 
-*** Define abs
+*** Macros
 
 #+LATEX_HEADER: \usepackage{mathtools}
+
+Absolute Value with expanding brackets
 #+LATEX_HEADER: \DeclarePairedDelimiter\abs{\lvert}{\rvert} % ABS: abs{}
+
+Fancy fractions
+#+LATEX_HEADER: \usepackage{xfrac}
 
 *** Configure fonts
 
@@ -196,6 +201,7 @@ $A^{-1} = \frac{1}{\det(A)} \text{adj}(A)$
 
 ** Matrix Example
 
+#+LATEX: \centering
 \begin{align*}
     M & = \begin{bmatrix} 1 & 0 & 1 \\ 0 & 2 & 1 \\ 1 & 1 & 1 \end{bmatrix} \\
 \end{align*}
@@ -208,42 +214,42 @@ $A^{-1} = \frac{1}{\det(A)} \text{adj}(A)$
         0 & 2 & 1 & 0 & 1 & 0 \\
         1 & 1 & 1 & 0 & 0 & 1
     \end{bNiceArray}
-    & \xrightarrow{R_0 / 1} &
+    \onslide<2->{& \xrightarrow{R_0 / 1} &
     \begin{bNiceArray}{ccc|ccc}
         \symbf{1} & \symbf{0} & \symbf{1} & \symbf{1} & \symbf{0} & \symbf{0} \\
         0 & 2 & 1 & 0 & 1 & 0 \\
         1 & 1 & 1 & 0 & 0 & 1
-    \end{bNiceArray}
-    & \xrightarrow[R_2 - 1 R_0]{R_1 - 0R_0} &
+    \end{bNiceArray}}
+    \onslide<3->{& \xrightarrow[R_2 - 1 R_0]{R_1 - 0R_0} &
     \begin{bNiceArray}{ccc|ccc}
         1 & 0 & 1 & 1 & 0 & 0 \\
         \symbf{0} & \symbf{2} & \symbf{1} & \symbf{0} & \symbf{1} & \symbf{0} \\
-        \symbf{0} & \symbf{1} & \symbf{0} & \symbf{-1} & \symbf{0} & \symbf{1}
-    \end{bNiceArray} \\
-    & \xrightarrow{R_1 / 2} &
+        \symbf{0} & \symbf{1} & \symbf{0} & -\symbf{1} & \symbf{0} & \symbf{1}
+    \end{bNiceArray}} \\
+    \onslide<4->{& \xrightarrow{R_1 / 2} &
     \begin{bNiceArray}{ccc|ccc}
         1 & 0 & 1 & 1 & 0 & 0 \\
-        \symbf{0} & \symbf{1} & \symbf{\frac{1}{2}} & \symbf{0} & \symbf{\frac{1}{2}} & \symbf{0} \\
+        \symbf{0} & \symbf{1} & \symbf{\sfrac{1}{2}} & \symbf{0} & \symbf{\sfrac{1}{2}} & \symbf{0} \\
         0 & 1 & 0 & -1 & 0 & 1
-    \end{bNiceArray}
-    & \xrightarrow[R_2 - 1 R_1]{R_0 - 0R_1} &
+    \end{bNiceArray}}
+    \onslide<5->{& \xrightarrow[R_2 - 1 R_1]{R_0 - 0R_1} &
     \begin{bNiceArray}{ccc|ccc}
         \symbf{1} & \symbf{0} & \symbf{1} & \symbf{1} & \symbf{0} & \symbf{0} \\
-        0 & 1 & \frac{1}{2} & 0 & \frac{1}{2} & 0 \\
-        \symbf{0} & \symbf{0} & \symbf{-\frac{1}{2}} & -\symbf{1} & \symbf{-\frac{1}{2}} & \symbf{1}
-    \end{bNiceArray} \\
-    & \xrightarrow{R_2 / -\frac{1}{2}} &
+        0 & 1 & \sfrac{1}{2} & 0 & \sfrac{1}{2} & 0 \\
+        \symbf{0} & \symbf{0} & -\symbf{\sfrac{1}{2}} & -\symbf{1} & -\symbf{\sfrac{1}{2}} & \symbf{1}
+    \end{bNiceArray}} \\
+    \onslide<6->{& \xrightarrow{R_2 / -\sfrac{1}{2}} &
     \begin{bNiceArray}{ccc|ccc}
         1 & 0 & 1 & 1 & 0 & 0 \\
-        0 & 1 & \frac{1}{2} & 0 & \frac{1}{2} & 0 \\
-        \symbf{0} & \symbf{0} & \symbf{1} & \symbf{2} & \symbf{1} & \symbf{-2}
-    \end{bNiceArray}
-    & \xrightarrow[R_1 - \frac{1}{2} R_2]{R_0 - 1R_2} &
+        0 & 1 & \sfrac{1}{2} & 0 & \sfrac{1}{2} & 0 \\
+        \symbf{0} & \symbf{0} & \symbf{1} & \symbf{2} & \symbf{1} & -\symbf{2}
+    \end{bNiceArray}}
+    \onslide<7->{& \xrightarrow[R_1 - \sfrac{1}{2} R_2]{R_0 - 1R_2} &
     \begin{bNiceArray}{ccc|ccc}
-        \symbf{1} & \symbf{0} & \symbf{0} & \symbf{-1} & \symbf{-1} & \symbf{2} \\
-        \symbf{0} & \symbf{1} & \symbf{0} & \symbf{-1} & \symbf{0} & \symbf{1} \\
+        \symbf{1} & \symbf{0} & \symbf{0} & -\symbf{1} & -\symbf{1} & \symbf{2} \\
+        \symbf{0} & \symbf{1} & \symbf{0} & -\symbf{1} & \symbf{0} & \symbf{1} \\
         0 & 0 & 1 & 2 & 1 & -2
-    \end{bNiceArray}
+    \end{bNiceArray}}
 \end{align*}
 
 * GPU Programming
