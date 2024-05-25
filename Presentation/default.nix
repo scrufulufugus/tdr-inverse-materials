@@ -18,6 +18,7 @@ stdenvNoCC.mkDerivation {
     emacs
     tex
     inkscape
+    pygments
   ];
 
   preBuild = ''
