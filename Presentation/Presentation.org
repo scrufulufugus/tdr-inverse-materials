@@ -86,7 +86,7 @@ Fancy fractions
 
 #+BEAMER_HEADER: \setmathfont{Fira Math}
 #+BEAMER_HEADER: \setmathfont{TeX Gyre DejaVu Math}[range={\vysmwhtcircle,\times,\vdots,\star}]
-#+BEAMER_HEADER: \setmonofont{Hack}
+/#+BEAMER_HEADER: \setmonofont{Hack}
 
 *** Citations
 

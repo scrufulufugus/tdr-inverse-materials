@@ -31,7 +31,7 @@
         };
 
         devShells.default = pkgs.mkShell.override { stdenv = pkgs.stdenvNoCC; } {
-          packages = with pkgs; [ texlive.combined.scheme-full python311Packages.pygments hack-font ];
+          packages = with pkgs; [ texlive.combined.scheme-full python311Packages.pygments ];
         };
       });
 }
