@@ -56,7 +56,17 @@
 #+BEAMER_HEADER: \definecolor{royalblue}{HTML}{4169e1}
 #+BEAMER_HEADER: \definecolor{forestgreen}{HTML}{228b22}
 
-*** Use Listings instead of verbatim
+*** Define some colors
+
+Diagram colors
+#+BEAMER_HEADER: \definecolor{pastelred}{HTML}{FFCCCC}
+#+BEAMER_HEADER: \definecolor{pastelblue}{HTML}{C9DAF8}
+#+BEAMER_HEADER: \definecolor{pastelyellow}{HTML}{FFF2CC}
+#+BEAMER_HEADER: \definecolor{pastelgreen}{HTML}{D9EAD3}
+#+BEAMER_HEADER: \definecolor{pastelbluegreen}{HTML}{D0E0E3}
+#+BEAMER_HEADER: \definecolor{pastelpurple}{HTML}{D9D2E9}
+
+*** Use minted instead of verbatim
 
 #+LATEX_HEADER: \usepackage{minted}
 
