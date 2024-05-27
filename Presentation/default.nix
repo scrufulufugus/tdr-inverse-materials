@@ -5,6 +5,7 @@
   tex,
   inkscape,
   pygments,
+  fontConfig ? {},
   ...
 }:
 
@@ -20,6 +21,8 @@ stdenvNoCC.mkDerivation {
     inkscape
     pygments
   ];
+
+  FONTCONFIG_FILE = fontConfig;
 
   preBuild = ''
     HOME=$PWD
