@@ -5,6 +5,7 @@
   tex,
   inkscape,
   pygments,
+  hack-font,
   ...
 }:
 
@@ -19,6 +20,7 @@ stdenvNoCC.mkDerivation {
     tex
     inkscape
     pygments
+    hack-font
   ];
 
   preBuild = ''
