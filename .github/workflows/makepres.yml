@@ -30,6 +30,7 @@ jobs:
         run: |
           mkdir public
           cp -L --no-preserve=all -t public ./result/*
+          cp -L --no-preserve=all -t public ./README.md
 
       - name: Deploy pdf
         uses: peaceiris/actions-gh-pages@v4
