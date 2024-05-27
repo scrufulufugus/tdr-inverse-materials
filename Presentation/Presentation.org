@@ -367,6 +367,20 @@ $A^{-1} = \frac{1}{\det(A)} \text{adj}(A)$
 - Kernel
   - Group of warps that operate on the same method
 
+** Branch Divergence
+
+#+LATEX: \begin{center}
+#+ATTR_LATEX: :height 0.80\textheight
+[[./Figs/branch_divergence.svg]]
+#+LATEX: \end{center}
+
+** Loop Divergence
+
+#+LATEX: \begin{center}
+#+ATTR_LATEX: :height 0.80\textheight
+[[./Figs/loop_divergence.svg]]
+#+LATEX: \end{center}
+
 ** Basic CUDA Program
 *** Code
 :PROPERTIES:
