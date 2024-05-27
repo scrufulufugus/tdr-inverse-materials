@@ -405,6 +405,65 @@ Hello World from (1, 3)
 
 Hello World from (0, 1)
 
+
+** CUDA Matrix Inversion: FixRow
+
+#+ATTR_LATEX: :options fontsize=\footnotesize,linenos=true,xleftmargin=0.5cm
+#+BEGIN_SRC cuda
+__global__ void fixRow(
+    float *matrix, int size, int rowId) {
+  // the ith row of the matrix
+  __shared__ float Ri[MAX_BLOCK_SIZE];
+  // The diagonal element for ith row
+  __shared__ float Aii;
+  int colId = threadIdx.x;
+  Ri[colId] = matrix[size * rowId + colId];
+  Aii = matrix[size * rowId + rowId];
+
+  __syncthreads();
+  // Divide the whole row by the diagonal
+  Ri[colId] = Ri[colId] / Aii;
+  matrix[size * rowId + colId] = Ri[colId];
+}
+#+END_SRC
+
+** CUDA Matrix Inversion: FixColumn
+
+#+ATTR_LATEX: :options fontsize=\footnotesize,linenos=true,xleftmargin=0.5cm
+#+BEGIN_SRC cuda
+__global__ void fixColumn(
+    float *matrix, int size, int colId) {
+  int i = threadIdx.x, j = blockIdx.x;
+  // The colId column
+  __shared__ float col[MAX_BLOCK_SIZE];
+  // The jth element of the colId row
+  __shared__ float AColIdj;
+  // The jth column
+  __shared__ float colj[MAX_BLOCK_SIZE];
+  col[i] = matrix[i * size + colId];
+  __syncthreads();
+  colj[i] = matrix[i * size + j];
+  AColIdj = matrix[colId * size + j];
+  if (i != colId) {
+    colj[i] = colj[i] - AColIdj * col[i];
+  }
+  matrix[i * size + j] = colj[i];
+}
+#+END_SRC
+
+** CUDA Matrix Inversion: CPU Loop
+
+#+ATTR_LATEX: :options fontsize=\footnotesize,linenos=true,xleftmargin=0.5cm
+#+BEGIN_SRC cuda
+for (size_t j = 0; j < rows; j++) {
+  fixRow<<<1, aug_cols>>>(data_gpu, aug_cols, j);
+  auto_throw(cudaDeviceSynchronize());
+
+  fixColumn<<<rows, aug_cols>>>(data_gpu, aug_cols, j);
+  auto_throw(cudaDeviceSynchronize());
+}
+#+END_SRC
+
 ** Thread-Data Remapping
 
 * Results
