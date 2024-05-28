@@ -569,6 +569,9 @@ __global__ void fixColumn(
 \end{align*}
 
 ** Thread-Data Remapping
+:PROPERTIES:
+    :BEAMER_opt: c
+:END:
 
 #+LATEX: \begin{center}
 #+ATTR_LATEX: :width 0.90\textwidth
