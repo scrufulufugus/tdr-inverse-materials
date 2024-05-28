@@ -149,7 +149,7 @@ The _identity_ of an operation $\star$ and set $G$ is some value $\symbfit{i} \i
 - Thus the inverse of $a$ is $\frac{1}{a}$ since $a \times a^{-1} = 1 \to a = \frac{1}{a}$.
   - Note that this is only true because $a \times b = b \times a$ for all $a,b \in \symbb{R}$.
 
-** Matrix Inverse
+** TODO Matrix Inverse :noexport:
 
 *** Problem
 
