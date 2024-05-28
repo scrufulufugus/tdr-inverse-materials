@@ -120,6 +120,9 @@ Angled Vector
 Tight Align
 #+LATEX_HEADER: \newenvironment{talign*}{\centering $\displaystyle\begin{aligned}}{\end{aligned}$\par}
 
+Algorithm
+#+LATEX_HEADER: \usepackage{algorithm2e}
+
 * Introduction to Inverses
 
 ** What Is An Inverse?
@@ -233,6 +236,26 @@ $A^{-1} = \frac{1}{\det(A)} \text{adj}(A)$
         6 & 4 & 2 & 0
     \end{bNiceArray}}
 \end{align*}
+
+** Gauss-Jordan Algorithm
+
+\begin{algorithm}[H]
+    \KwData{$M$ is a matrix with $N$ rows}
+    $i \gets 0$\;
+    \While{$i < N$}{
+        \ForEach{$M_{ij}$ in $M_i$}{
+            $M_{ij} \gets M_{ij} / M_{ii}$\;
+        }
+
+        \ForEach{$M_k$ in $M$ where $k \neq i$}{
+            \ForEach{$M_{kj}$ in $M_k$}{
+                $M_{kj} \gets M_{kj} - M_{ki} \times M_{ij}$\;
+            }
+        }
+
+        $i \gets i + 1$\;
+    }
+\end{algorithm}
 
 * Class Activity
 
