@@ -570,6 +570,18 @@ __global__ void fixColumn(
 
 ** Thread-Data Remapping
 
+#+LATEX: \begin{center}
+#+ATTR_LATEX: :width 0.90\textwidth
+[[./Figs/tdr_example.svg]]
+#+LATEX: \end{center}
+
+** Thread-Data Remapping
+
+#+LATEX: \begin{center}
+#+ATTR_LATEX: :height 0.80\textheight
+[[./Figs/div_red.svg]]
+#+LATEX: \end{center}
+
 * Results
 
 ** Results
