@@ -293,6 +293,9 @@ $A^{-1} = \frac{1}{\det(A)} \text{adj}(A)$
 
 ** CPU Architecture
 
+#+COMMENT: Fixes columns alignment
+#+LATEX: \vskip-1.5em
+
 *** Diagram
 :PROPERTIES:
     :BEAMER_col: 0.50
@@ -331,6 +334,9 @@ $A^{-1} = \frac{1}{\det(A)} \text{adj}(A)$
 - Each core has its own registers and control logic
 
 ** SIMT Architecture
+
+#+COMMENT: Fixes columns alignment
+#+LATEX: \vskip-1.5em
 
 *** Diagram
 :PROPERTIES:
@@ -382,6 +388,10 @@ $A^{-1} = \frac{1}{\det(A)} \text{adj}(A)$
 #+LATEX: \end{center}
 
 ** Basic CUDA Program
+
+#+COMMENT: Fixes columns alignment
+#+LATEX: \vskip-1.5em
+
 *** Code
 :PROPERTIES:
     :BEAMER_col: 0.55
@@ -444,6 +454,9 @@ for (size_t j = 0; j < rows; j++) {
 
 ** CUDA Matrix Inversion: FixRow
 
+#+COMMENT: Fixes columns alignment
+#+LATEX: \vskip-1.5em
+
 *** Code
 :PROPERTIES:
     :BEAMER_col: 0.60
@@ -484,6 +497,9 @@ __global__ void fixRow(
 \end{align*}
 
 ** CUDA Matrix Inversion: FixColumn
+
+#+COMMENT: Fixes columns alignment
+#+LATEX: \vskip-1.5em
 
 *** Code
 :PROPERTIES:
