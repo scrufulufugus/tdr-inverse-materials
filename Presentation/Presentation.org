@@ -547,6 +547,27 @@ __global__ void fixColumn(
     \end{bNiceArray} \\
 \end{align*}
 
+** In-Place Optimization
+
+\begin{align*}
+    \onslide<1->{
+        \begin{bNiceArray}{ccc|ccc}
+            \only<2->{\Block[transparent,fill=pastelbg,rounded-corners]{3-2}{}}
+            1 & 0 & 1 & 1 & 0 & 0 \\
+            0 & 1 & \sfrac{1}{2} & 0 & \sfrac{1}{2} & 0 \\
+            0 & 0 & -\sfrac{1}{2} & -1 & -\sfrac{1}{2} & 1
+        \end{bNiceArray}
+    }
+    \onslide<3->{
+        \rightarrow
+        \begin{bNiceArray}{ccc|c}
+            1 & 0 & 0 & 1 \\
+            0 & \sfrac{1}{2} & 0 & \sfrac{1}{2} \\
+            -1 & -\sfrac{1}{2} & 1 & -\sfrac{1}{2}
+        \end{bNiceArray} \\
+    }
+\end{align*}
+
 ** Thread-Data Remapping
 
 * Results
