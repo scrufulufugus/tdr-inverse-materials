@@ -63,7 +63,7 @@ Diagram colors
 #+BEAMER_HEADER: \definecolor{pastelblue}{HTML}{C9DAF8}
 #+BEAMER_HEADER: \definecolor{pastelyellow}{HTML}{FFF2CC}
 #+BEAMER_HEADER: \definecolor{pastelgreen}{HTML}{D9EAD3}
-#+BEAMER_HEADER: \definecolor{pastelbluegreen}{HTML}{D0E0E3}
+#+BEAMER_HEADER: \definecolor{pastelbg}{HTML}{D0E0E3}
 #+BEAMER_HEADER: \definecolor{pastelpurple}{HTML}{D9D2E9}
 
 *** Use minted instead of verbatim
@@ -444,6 +444,11 @@ for (size_t j = 0; j < rows; j++) {
 
 ** CUDA Matrix Inversion: FixRow
 
+*** Code
+:PROPERTIES:
+    :BEAMER_col: 0.60
+:END:
+
 #+ATTR_LATEX: :options fontsize=\footnotesize,linenos=true,xleftmargin=0.5cm
 #+BEGIN_SRC cuda
 __global__ void fixRow(
@@ -463,7 +468,27 @@ __global__ void fixRow(
 }
 #+END_SRC
 
+*** Example
+:PROPERTIES:
+    :BEAMER_col: 0.40
+    :BEAMER_env: block
+:END:
+
+\begin{align*}
+    \begin{bNiceArray}{ccc|ccc}
+        \Block[transparent,fill=pastelblue,rounded-corners]{1-6}{}
+        1 & 0 & 1 & 1 & 0 & 0 \\
+        0 & 2 & 1 & 0 & 1 & 0 \\
+        1 & 1 & 1 & 0 & 0 & 1
+    \end{bNiceArray} \\
+\end{align*}
+
 ** CUDA Matrix Inversion: FixColumn
+
+*** Code
+:PROPERTIES:
+    :BEAMER_col: 0.60
+:END:
 
 #+ATTR_LATEX: :options fontsize=\footnotesize,linenos=true,xleftmargin=0.5cm
 #+BEGIN_SRC cuda
@@ -486,6 +511,25 @@ __global__ void fixColumn(
   matrix[i * size + j] = colj[i];
 }
 #+END_SRC
+
+*** Example
+:PROPERTIES:
+    :BEAMER_col: 0.40
+    :BEAMER_env: block
+:END:
+
+\begin{align*}
+    \begin{bNiceArray}{ccc|ccc}
+        1 & 0 & 1 & 1 & 0 & 0 \\
+        \Block[transparent,fill=pastelbg,rounded-corners]{2-1}{} 0 &
+        \Block[transparent,fill=pastelbg,rounded-corners]{2-1}{} 2 &
+        \Block[transparent,fill=pastelbg,rounded-corners]{2-1}{} 1 &
+        \Block[transparent,fill=pastelbg,rounded-corners]{2-1}{} 0 &
+        \Block[transparent,fill=pastelbg,rounded-corners]{2-1}{} 1 &
+        \Block[transparent,fill=pastelbg,rounded-corners]{2-1}{} 0 \\
+        1 & 1 & 1 & 0 & 0 & 1
+    \end{bNiceArray} \\
+\end{align*}
 
 ** Thread-Data Remapping
 
