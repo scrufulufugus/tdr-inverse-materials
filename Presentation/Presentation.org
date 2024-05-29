@@ -188,19 +188,50 @@ The _identity_ of an operation $\star$ and set $G$ is some value $\symbfit{i} \i
 
 ** General Definition
 
-*** Matrix Inverse
+#+COMMENT: Fixes columns alignment
+#+LATEX: \vskip-1.5em
+
+*** Column 1
+:PROPERTIES:
+    :BEAMER_col: 0.50
+:END:
+
+**** Matrix Inverse
 :PROPERTIES:
     :BEAMER_env: definition
 :END:
 
+Let $A$ be an $n \times n$ matrix,
+
 $A^{-1} = \frac{1}{\det(A)} \text{adj}(A)$
 
-*** The Rest
+**** Determinate: $\det(\symbb{R}^{n \times n}) \to \symbb{R}$
 :PROPERTIES:
-    :BEAMER_env: ignoreheading
+    :BEAMER_env: block
+    :BEAMER_act: <2->
 :END:
 
-- If $\det(A)$ then the inverse is undefined.
+\begin{talign*}
+    \det \left(\begin{bmatrix} a & b \\ c & d \end{bmatrix}\right) = ad - bc
+\end{talign*}
+
+*** Adjugate: $\text{adj}(\symbb{R}^{n \times n}) \to \symbb{R}^{n \times n}$
+:PROPERTIES:
+    :BEAMER_env: block
+    :BEAMER_col: 0.50
+    :BEAMER_act: <3->
+:END:
+
+\begin{talign*}
+    A \cdot \text{adj}\left(A\right) & = \det(A) \cdot \symbf{I} \\
+    \onslide<4->{& = \begin{bmatrix} \det(A) & 0 \\ 0 & \det(A) \end{bmatrix} \\}
+    \onslide<5->{& = \begin{bmatrix} ad - bc & 0 \\ 0 & ad - bc \end{bmatrix} \\}
+    \onslide<6->{
+        \begin{bmatrix} a & b \\ c & d \end{bmatrix}
+        \begin{bmatrix} d & -b \\ -c & a \end{bmatrix}
+        & = \begin{bmatrix} ad - bc & 0 \\ 0 & ad - bc \end{bmatrix}
+    }
+\end{talign*}
 
 ** Gauss-Jordan Method
 
