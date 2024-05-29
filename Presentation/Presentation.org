@@ -647,6 +647,53 @@ __global__ void fixColumn(
 [[./Figs/div_red.svg]]
 #+LATEX: \end{center}
 
+** TDR Matrix Inversion: FixRow
+
+#+ATTR_LATEX: :options fontsize=\footnotesize,linenos=true,xleftmargin=0.5cm
+#+BEGIN_SRC cuda
+struct FixRow {
+  using Type = void(*)(index_t rowId, size_t colId);
+
+  template<typename PROGRAM>
+  __device__ static void eval(PROGRAM prog, index_t rowId, size_t colId) {
+    index_t size = prog.device.size.row;
+    matrix_t Ri  = prog.device.matrix[size*rowId + colId];
+    matrix_t Aii = prog.device.Aij[rowId];
+
+    Ri /= Aii;
+    prog.device.matrix[size*rowId + colId] = Ri;
+
+    if( Ri != 0.0 ) {
+      prog.template async<SplitCol>(rowId, 0, prog.device.size.col-1, colId);
+    }
+  }
+};
+#+END_SRC
+
+** TDR Matrix Inversion: FixColumn
+
+#+ATTR_LATEX: :options fontsize=\footnotesize,linenos=true,xleftmargin=0.5cm
+#+BEGIN_SRC cuda
+struct FixCol {
+  using Type = void(*)(index_t colId, index_t i_start,
+                       index_t i_end, index_t j);
+  template<typename PROGRAM>
+  __device__ static void eval(
+      PROGRAM prog, index_t colId,
+      index_t i_start, index_t i_end, index_t j) {
+    index_t size = prog.device.size.row;
+    for (index_t i = i_start; i <= i_end; i++) {
+      matrix_t col = prog.device.Aij[i];
+
+      if (col != 0) {
+        matrix_t colj    = prog.device.matrix[    i*size + j];
+        matrix_t AColIdj = prog.device.matrix[colId*size + j];
+        if (i != colId) {
+          colj -= AColIdj * col;
+          prog.device.matrix[i*size + j] = colj;
+}}}};
+#+END_SRC
+
 * Results
 
 ** Results
