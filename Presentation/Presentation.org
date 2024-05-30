@@ -123,6 +123,25 @@ Tight Align
 Algorithm
 #+LATEX_HEADER: \usepackage{algorithm2e}
 
+* Introduction
+
+** Overview
+:PROPERTIES:
+    :BEAMER_opt: c
+:END:
+
+#+ATTR_BEAMER: :overlay <1->
+- ~cpu-inverse~
+  - Basic algorithm implementation to prove validity.
+#+ATTR_BEAMER: :overlay <2->
+- ~inverse~
+  - GPU implementation written in CUDA.
+  - Based on the works of Sharma et al [cite:@sharma:2013] and DasGupta [cite:@dasgupta:2013].
+#+ATTR_BEAMER: :overlay <3->
+- ~tdr-inverse~
+  - Utilizes Thread-Data Remapping (TDR) to more efficiently use the GPU.
+  - Actual TDR implementation is Dr. Cuneo's Harmonize library [cite:@cuneo:2024].
+
 * Introduction to Inverses :noexport:
 
 ** What Is An Inverse?
