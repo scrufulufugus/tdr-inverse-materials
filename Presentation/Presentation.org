@@ -2,7 +2,7 @@
 
 ** Header
 #+title: Optimized GPU-Based Matrix Inversion
-#+SUBTITLE: Though The Use of Thread-Data Remapping
+#+SUBTITLE: Through The Use of Thread-Data Remapping
 #+AUTHOR: Samuel J Monson
 #+EMAIL: monsonsamuel@seattleu.edu
 #+DATE: 2024-05-31
@@ -226,7 +226,7 @@ Let $A$ be an $n \times n$ matrix,
 :END:
 
 \begin{talign*}
-    A \cdot X\left(A\right) & = \det(A) \cdot \symbf{I} \\
+    A \cdot X & = \det(A) \cdot \symbf{I} \\
     \onslide<4->{& = \begin{bmatrix} \det(A) & 0 \\ 0 & \det(A) \end{bmatrix} \\}
     \onslide<5->{
         \begin{bmatrix} a & b \\ c & d \end{bmatrix}
