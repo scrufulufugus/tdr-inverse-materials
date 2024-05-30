@@ -793,3 +793,15 @@ struct FixCol {
 #+LATEX: \setlength\bibitemsep{0.5\baselineskip}
 #+LATEX: \nocite{*} % Use all citations
 #+print_bibliography:
+
+** Questions?
+:PROPERTIES:
+    :BEAMER_opt: c
+:END:
+
+#+LATEX: \begin{center}
+https://github.com/scrufulufugus/tdr-inverse-materials
+
+#+ATTR_LATEX: :height 0.70\textheight
+[[./Figs/qr.svg]]
+#+LATEX: \end{center}
