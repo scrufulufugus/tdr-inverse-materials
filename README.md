@@ -2,9 +2,9 @@
 
 ## PDF Versions
 
-![Proposal - Rendered](https://github.com/scrufulufugus/tdr-inverse-materials/blob/pdf/Proposal.pdf)
+[Proposal - Rendered](https://github.com/scrufulufugus/tdr-inverse-materials/blob/pdf/Proposal.pdf)
 
-![Final Presentation - Rendered](https://github.com/scrufulufugus/tdr-inverse-materials/blob/pdf/Presentation.pdf)
+[Final Presentation - Rendered](https://github.com/scrufulufugus/tdr-inverse-materials/blob/pdf/Presentation.pdf)
 
 ## About <a name="about"></a>
 
