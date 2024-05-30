@@ -383,7 +383,7 @@ Let $A$ be an $n \times n$ matrix,
     \end{bNiceArray}}
 \end{talign*}
 
-* GPU Programming
+* GPU Programming :noexport:
 
 ** CPU Architecture
 
