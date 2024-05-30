@@ -53,10 +53,13 @@
 #+BEAMER_THEME: focus
 #+BEAMER_HEADER: \definecolor{main}{HTML}{93361f}
 #+BEAMER_HEADER: \definecolor{background}{HTML}{D0D0D0}
-#+BEAMER_HEADER: \definecolor{royalblue}{HTML}{4169e1}
-#+BEAMER_HEADER: \definecolor{forestgreen}{HTML}{228b22}
 
 *** Define some colors
+
+X11 Colors
+#+BEAMER_HEADER: \definecolor{royalblue}{HTML}{4169e1}
+#+BEAMER_HEADER: \definecolor{forestgreen}{HTML}{228b22}
+#+BEAMER_HEADER: \definecolor{firebrick}{HTML}{B22222}
 
 Diagram colors
 #+BEAMER_HEADER: \definecolor{pastelred}{HTML}{FFCCCC}
@@ -131,14 +134,14 @@ Algorithm
 :END:
 
 #+ATTR_BEAMER: :overlay <1->
-- ~cpu-inverse~
+- \textcolor{royalblue}{~cpu-inverse~}
   - Basic algorithm implementation to prove validity.
 #+ATTR_BEAMER: :overlay <2->
-- ~inverse~
+- \textcolor{forestgreen}{~inverse~}
   - GPU implementation written in CUDA.
   - Based on the works of Sharma et al [cite:@sharma:2013] and DasGupta [cite:@dasgupta:2013].
 #+ATTR_BEAMER: :overlay <3->
-- ~tdr-inverse~
+- \textcolor{firebrick}{~tdr-inverse~}
   - Utilizes Thread-Data Remapping (TDR) to more efficiently use the GPU.
   - Actual TDR implementation is Dr. Cuneo's Harmonize library [cite:@cuneo:2024].
 
