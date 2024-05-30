@@ -728,7 +728,25 @@ struct FixCol {
 
 * Results
 
-** Results
+** Random Matrices
+:PROPERTIES:
+    :BEAMER_opt: c
+:END:
+
+#+LATEX: \begin{center}
+#+ATTR_LATEX: :height 0.80\textheight
+[[./Figs/all_random.png]]
+#+LATEX: \end{center}
+
+** Sparse Matrices
+:PROPERTIES:
+    :BEAMER_opt: c
+:END:
+
+#+LATEX: \begin{center}
+#+ATTR_LATEX: :height 0.80\textheight
+[[./Figs/all_sparse.png]]
+#+LATEX: \end{center}
 
 * Conclusion
 :PROPERTIES:
