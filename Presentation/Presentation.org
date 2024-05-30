@@ -751,6 +751,15 @@ struct FixCol {
 
 * Results
 
+** Comparison
+:PROPERTIES:
+    :BEAMER_opt: c
+:END:
+
+- \textcolor{royalblue}{~cpu-inverse~}
+- \textcolor{forestgreen}{~inverse~}
+- \textcolor{firebrick}{~tdr-inverse~}
+
 ** Random Matrices
 :PROPERTIES:
     :BEAMER_opt: c
