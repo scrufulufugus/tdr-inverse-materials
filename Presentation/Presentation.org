@@ -223,7 +223,7 @@ The _identity_ of an operation $\star$ and set $G$ is some value $\symbfit{i} \i
 Let $A$ be an $n \times n$ matrix,
 
 \begin{talign*}
-    A A^{-1} & = \symbf{I} \\
+    A A^{-1} & = \symbf{I} = A^{-1} A \\
     A^{-1} & = \frac{1}{\det(A)} X
 \end{talign*}
 
@@ -245,14 +245,15 @@ Let $A$ be an $n \times n$ matrix,
 :END:
 
 \begin{talign*}
-    A \cdot X & = \det(A) \cdot \symbf{I} \\
-    \onslide<4->{& = \begin{bmatrix} \det(A) & 0 \\ 0 & \det(A) \end{bmatrix} \\}
-    \onslide<5->{
+    X & = \det(A) \cdot A^{-1} \\
+    \onslide<4->{A \cdot X & = \det(A) \cdot \symbf{I} \\}
+    \onslide<5->{& = \begin{bmatrix} \det(A) & 0 \\ 0 & \det(A) \end{bmatrix} \\}
+    \onslide<6->{
         \begin{bmatrix} a & b \\ c & d \end{bmatrix}
         \begin{bmatrix} x_1 & x_2 \\ x_3 & x_4 \end{bmatrix}
         & = \begin{bmatrix} ad - bc & 0 \\ 0 & ad - bc \end{bmatrix} \\
     }
-    \onslide<6->{
+    \onslide<7->{
         \begin{bmatrix} a & b \\ c & d \end{bmatrix}
         \begin{bmatrix} d & -b \\ -c & a \end{bmatrix}
         & = \begin{bmatrix} ad - bc & 0 \\ 0 & ad - bc \end{bmatrix}
