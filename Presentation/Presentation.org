@@ -785,8 +785,7 @@ struct FixCol {
 
 #+ATTR_BEAMER: :overlay <+->
 - The use of TDR can offer fairly significant gains when applied to sparse matrix inversion.
-- More work needed on space vs. calculation trade-off.
-- Possible next step is to implement existing divide-and-conquer inverse layer.
+- Possible next step is to implement Strassen Inversion [cite:@strassen:1969].
 
 * Outro
 :PROPERTIES:
