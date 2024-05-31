@@ -289,17 +289,17 @@ Let $A$ be an $n \times n$ matrix,
         3 & 2 & 1 & 0 \\
         -7 & -5 & 0 & 1
     \end{bNiceArray}
-    \xrightarrow{R_0 \leftrightarrow R_1}
+    \xrightarrow{R_1 \leftrightarrow R_2}
     \begin{bNiceArray}{cc|cc}
         -7 & -5 & 0 & 1 \\
         3 & 2 & 1 & 0
     \end{bNiceArray}}
-    \onslide<4->{\xrightarrow{R_1 \times 2}
+    \onslide<4->{\xrightarrow{R_2 \times 2}
     \begin{bNiceArray}{cc|cc}
         -7 & -5 & 0 & 1 \\
         6 & 4 & 2 & 0
     \end{bNiceArray}}
-    \onslide<5->{\xrightarrow{R_0 + \sfrac{1}{2} R_1}
+    \onslide<5->{\xrightarrow{R_1 + \sfrac{1}{2} R_2}
     \begin{bNiceArray}{cc|cc}
         -4 & -3 & -1 & 1 \\
         6 & 4 & 2 & 0
@@ -324,22 +324,22 @@ Let $A$ be an $n \times n$ matrix,
         3 & 2 & 1 & 0 \\
         -7 & -5 & 0 & 1
     \end{bNiceArray}}
-    \onslide<3->{& \xrightarrow{R_0 / 3} &
+    \onslide<3->{& \xrightarrow{R_1 / 3} &
     \begin{bNiceArray}{cc|cc}
         \symbf{1} & \symbf{\sfrac{2}{3}} & \symbf{\sfrac{1}{3}} & \symbf{0} \\
         -7 & -5 & 0 & 1
     \end{bNiceArray}}
-    \onslide<4->{& \xrightarrow{R_1 - (-7) R_0} &
+    \onslide<4->{& \xrightarrow{R_2 - (-7) R_1} &
     \begin{bNiceArray}{cc|cc}
         1 & \sfrac{2}{3} & \sfrac{1}{3} & 0 \\
         \symbf{0} & -\symbf{\sfrac{1}{3}} & \symbf{\sfrac{7}{3}} & \symbf{1}
     \end{bNiceArray} \\}
-    \onslide<5->{& \xrightarrow{R_1 / -\sfrac{1}{3}} &
+    \onslide<5->{& \xrightarrow{R_2 / -\sfrac{1}{3}} &
     \begin{bNiceArray}{cc|cc}
         1 & \sfrac{2}{3} & \sfrac{1}{3} & 0 \\
         \symbf{0} & \symbf{1} & -\symbf{7} & -\symbf{3}
     \end{bNiceArray}}
-    \onslide<6->{& \xrightarrow{R_0 - \sfrac{2}{3} R_1} &
+    \onslide<6->{& \xrightarrow{R_1 - \sfrac{2}{3} R_2} &
     \begin{bNiceArray}{cc|cc}
         \symbf{1} & \symbf{0} & \symbf{5} & \symbf{2} \\
         0 & 1 & -7 & - 3
@@ -368,37 +368,37 @@ Let $A$ be an $n \times n$ matrix,
         0 & 2 & 1 & 0 & 1 & 0 \\
         1 & 1 & 1 & 0 & 0 & 1
     \end{bNiceArray}
-    \onslide<2->{& \xrightarrow{R_0 / 1} &
+    \onslide<2->{& \xrightarrow{R_1 / 1} &
     \begin{bNiceArray}{ccc|ccc}
         \symbf{1} & \symbf{0} & \symbf{1} & \symbf{1} & \symbf{0} & \symbf{0} \\
         0 & 2 & 1 & 0 & 1 & 0 \\
         1 & 1 & 1 & 0 & 0 & 1
     \end{bNiceArray}}
-    \onslide<3->{& \xrightarrow[R_2 - 1 R_0]{R_1 - 0R_0}
+    \onslide<3->{& \xrightarrow[R_3 - 1 R_1]{R_2 - 0R_1}
     \begin{bNiceArray}{ccc|ccc}
         1 & 0 & 1 & 1 & 0 & 0 \\
         \symbf{0} & \symbf{2} & \symbf{1} & \symbf{0} & \symbf{1} & \symbf{0} \\
         \symbf{0} & \symbf{1} & \symbf{0} & -\symbf{1} & \symbf{0} & \symbf{1}
     \end{bNiceArray}} \\
-    \onslide<4->{& \xrightarrow{R_1 / 2} &
+    \onslide<4->{& \xrightarrow{R_2 / 2} &
     \begin{bNiceArray}{ccc|ccc}
         1 & 0 & 1 & 1 & 0 & 0 \\
         \symbf{0} & \symbf{1} & \symbf{\sfrac{1}{2}} & \symbf{0} & \symbf{\sfrac{1}{2}} & \symbf{0} \\
         0 & 1 & 0 & -1 & 0 & 1
     \end{bNiceArray}}
-    \onslide<5->{& \xrightarrow[R_2 - 1 R_1]{R_0 - 0R_1}
+    \onslide<5->{& \xrightarrow[R_3 - 1 R_2]{R_1 - 0R_2}
     \begin{bNiceArray}{ccc|ccc}
         \symbf{1} & \symbf{0} & \symbf{1} & \symbf{1} & \symbf{0} & \symbf{0} \\
         0 & 1 & \sfrac{1}{2} & 0 & \sfrac{1}{2} & 0 \\
         \symbf{0} & \symbf{0} & -\symbf{\sfrac{1}{2}} & -\symbf{1} & -\symbf{\sfrac{1}{2}} & \symbf{1}
     \end{bNiceArray}} \\
-    \onslide<6->{& \xrightarrow{R_2 / -\sfrac{1}{2}} &
+    \onslide<6->{& \xrightarrow{R_3 / -\sfrac{1}{2}} &
     \begin{bNiceArray}{ccc|ccc}
         1 & 0 & 1 & 1 & 0 & 0 \\
         0 & 1 & \sfrac{1}{2} & 0 & \sfrac{1}{2} & 0 \\
         \symbf{0} & \symbf{0} & \symbf{1} & \symbf{2} & \symbf{1} & -\symbf{2}
     \end{bNiceArray}}
-    \onslide<7->{& \xrightarrow[R_1 - \sfrac{1}{2} R_2]{R_0 - 1R_2}
+    \onslide<7->{& \xrightarrow[R_2 - \sfrac{1}{2} R_3]{R_1 - 1R_3}
     \begin{bNiceArray}{ccc|ccc}
         \symbf{1} & \symbf{0} & \symbf{0} & -\symbf{1} & -\symbf{1} & \symbf{2} \\
         \symbf{0} & \symbf{1} & \symbf{0} & -\symbf{1} & \symbf{0} & \symbf{1} \\
