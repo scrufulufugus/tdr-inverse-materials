@@ -756,6 +756,7 @@ struct FixCol {
     :BEAMER_opt: c
 :END:
 
+#+ATTR_BEAMER: :overlay <+->
 - \textcolor{royalblue}{~cpu-inverse~}
 - \textcolor{forestgreen}{~inverse~}
 - \textcolor{firebrick}{~tdr-inverse~}
@@ -780,7 +781,14 @@ struct FixCol {
 [[./Figs/all_sparse.png]]
 #+LATEX: \end{center}
 
-* Conclusion
+** Conclusion / Closing Thoughts
+
+#+ATTR_BEAMER: :overlay <+->
+- The use of TDR can offer fairly significant gains when applied to sparse matrix inversion.
+- More work needed on space vs. calculation trade-off.
+- Possible next step is to implement existing divide-and-conquer inverse layer.
+
+* Outro
 :PROPERTIES:
     :BEAMER_env: ignoreheading
 :END:
