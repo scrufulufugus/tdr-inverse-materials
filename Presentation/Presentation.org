@@ -145,7 +145,7 @@ Algorithm
   - Utilizes Thread-Data Remapping (TDR) to more efficiently use the GPU.
   - Actual TDR implementation is Dr. Cuneo's Harmonize library [cite:@cuneo:2024].
 
-* Introduction to Inverses :noexport:
+* Introduction to Inverses
 
 ** What Is An Inverse?
 
@@ -406,7 +406,7 @@ Let $A$ be an $n \times n$ matrix,
     \end{bNiceArray}}
 \end{talign*}
 
-* GPU Programming :noexport:
+* GPU Programming
 
 ** CPU Architecture
 
