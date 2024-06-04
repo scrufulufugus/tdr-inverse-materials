@@ -25,15 +25,20 @@
             fontConfig = fontConfig;
           };
           proposal = pkgs.callPackage ./Proposal { tex = tex; emacs = emacsWith; };
+          paper = pkgs.callPackage ./Paper { tex = tex; emacs = emacsWith; };
           default = pkgs.buildEnv {
             name = "tdr-inverse-materials";
-            paths = [ presentation proposal ];
+            paths = [ presentation proposal paper ];
           };
 
         };
 
         devShells.default = pkgs.mkShell.override { stdenv = pkgs.stdenvNoCC; } {
-          inputsFrom = [ self.packages.${system}.presentation self.packages.${system}.proposal ];
+          inputsFrom = [
+            self.packages.${system}.presentation
+            self.packages.${system}.proposal
+            self.packages.${system}.paper
+          ];
           FONTCONFIG_FILE = fontConfig;
         };
       });
