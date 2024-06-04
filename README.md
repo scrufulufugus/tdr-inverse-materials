@@ -6,6 +6,8 @@
 
 [Final Presentation - Rendered](https://github.com/scrufulufugus/tdr-inverse-materials/blob/pdf/Presentation.pdf)
 
+[Final Paper - Rendered](https://github.com/scrufulufugus/tdr-inverse-materials/blob/pdf/Paper.pdf)
+
 ## About <a name="about"></a>
 
 This is a collection of papers and presentation materials done as a masters project. The code that these documents relate to [can be found here](https://github.com/scrufulufugus/tdr-inverse).
