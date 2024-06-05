@@ -156,25 +156,66 @@ A better approach, introduced by **Cuneo and Bailey [cite:@cuneo:2024]**, handle
 
 * TODO Background
 
-** TODO Gauss-Jordan Elimination
+** Gauss-Jordan Elimination
 
-In linear algebra we can utilize matrix multiplication to transform a matrix row-by-row. For instance the multiplication $\begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} \begin{bmatrix} a & b \\ c & d \end{bmatrix} = \begin{bmatrix} c & d \\ a & b \end{bmatrix}$ swaps the rows of the right hand side matrix. Utilizing this technique we can define similar transformation matrices for scaling rows and adding multiples of one row to another. The process of Gauss-Jordan elimination utilizes these transformations to convert matrices to a canonical form where leading entries are 1 and 0s are present both above and below each leading entry. This form is called the reduced row-echelon form. If the matrix is fully reducible, then for a matrix with $n$ rows, the first $n$ columns form an identity matrix of size $n$. Thus, for an $n \times n$ matrix $M$, the given result of applying transformations $T_1$ to $T_i$ is the identity matrix $\symbf{I}_n$,
+In linear algebra we can utilize matrix multiplication to transform a matrix row-by-row. For instance the multiplication
 
-\begin{talign*}
+\begin{talign}
+    \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}
+    \begin{bmatrix} a & b \\ c & d \end{bmatrix}
+    & = \begin{bmatrix} c & d \\ a & b \end{bmatrix}
+\end{talign}
+
+#+LATEX: \noindent
+swaps the rows of the right hand side matrix. Utilizing this technique we can define similar transformation matrices for scaling rows and adding multiples of one row to another. The process of Gauss-Jordan elimination utilizes these transformations to convert matrices to a canonical form where leading entries are 1 and 0s are present both above and below each leading entry. This form is called the reduced row-echelon form. If the matrix is fully reducible, then for a matrix with $n$ rows, the first $n$ columns form an identity matrix of size $n$. Thus, for an $n \times n$ matrix $M$, the given result of applying transformations $T_1$ to $T_i$ is the identity matrix $\symbf{I}_n$,
+
+\begin{talign}
     T_n \dotsm T_2 T_1 M & = \symbf{I}_n
-\end{talign*}
+\end{talign}
 
+#+LATEX: \noindent
 Given that $M^{-1} M = \symbf{I}_n = M M^{-1}$ we can show that,
 
-\begin{talign*}
+\begin{talign}
     T_n \dotsm T_2 T_1 M & = M^{-1} M \\
     T_n \dotsm T_2 T_1 M M^{-1} & = M^{-1} M M^{-1} \\
     T_n \dotsm T_2 T_1 \symbf{I}_n & = M^{-1}
-\end{talign*}
+\end{talign}
 
+#+LATEX: \noindent
 Therefore applying the same $T_1$ though $T_n$ operations to the identity matrix will result in the inverse of our matrix $M$. Utilizing this relationship we can invert a square matrix by performing Gauss-Jordan on the matrix $M|\symbf{I}$, $M$ concatenated with an identity matrix. The resulting matrix after Gauss-Jordan will be $\symbf{I}|M^{-1}$.
 
-Rather than performing the full matrix multiplication for every Gauss-Jordan operation we can merely apply the arithmetic directly to the row, given that we represent the result of each transformation as an algebraic operation on a given row. For example, the transformation of doubling row 3 in a matrix can be written as $R_3 = 2 \times R_3$ and thus it is sufficient to multiply each element of row 3 by 2.
+Rather than performing the full matrix multiplication for every Gauss-Jordan operation we can merely apply the arithmetic directly to the row, given that we represent the result of each transformation as an algebraic operation on a given row. For example, the transformation of doubling row 3 in a matrix can be written as $R_3 \gets 2 \times R_3$ and thus it is sufficient to multiply each element of row 3 by 2.
+
+While the combination matrix of all transformation $T_1 T_2 \dotsm T_n$ is unique, the individual operations are not. For example
+
+\begin{talign}
+    T_{R_1 = 2R_1} T_{\textbf{swap}(R_1, R_2)}
+    & = T_{\textbf{swap}(R_1, R_2)} T_{R_2 \gets 2R_2}
+\end{talign}
+
+#+LATEX: \noindent
+For this reason, there are many methods of deriving a combination of operations. For this research we focus on the algorithm utilized by Sharma et al [cite:@sharma:2013] given in [[algo-1]].
+
+#+CAPTION: Gauss-Jordan Elimination
+#+NAME: algo-1
+\begin{algorithm*}
+    \KwIn{An augmented matrix $M$ that has $n$ rows}
+    \ForEach{row $R_i$ in $M$}{
+        \tcp{Swap our current row for one with a non-zero $i\text{th}$ column.}
+        Find $R_k$ where $R_{ki} \neq 0$
+
+        $\textbf{swap}(R_i, R_k)$
+
+        \tcp{Divide our current row by its $i\text{th}$ element.}
+        $R_i \gets R_i / R_{ii}$
+
+        \tcp{From every other row subtract that rows $i\text{th}$ element times the $i\text{th}$ row.}
+        \ForEach{row $R_j$ in $M$ where $j \neq i$}{
+            $R_j \gets R_j - R_{ji} \times R_i$
+        }
+    }
+\end{algorithm*}
 
 *** TODO Parallel Gauss-Jordan
 
