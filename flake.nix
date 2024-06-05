@@ -25,7 +25,12 @@
             fontConfig = fontConfig;
           };
           proposal = pkgs.callPackage ./Proposal { tex = tex; emacs = emacsWith; };
-          paper = pkgs.callPackage ./Paper { tex = tex; emacs = emacsWith; };
+          paper = pkgs.callPackage ./Paper {
+            tex = tex;
+            emacs = emacsWith;
+            pygments = pkgs.python311Packages.pygments;
+            fontConfig = fontConfig;
+          };
           default = pkgs.buildEnv {
             name = "tdr-inverse-materials";
             paths = [ presentation proposal paper ];

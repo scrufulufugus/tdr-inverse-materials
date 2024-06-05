@@ -12,7 +12,10 @@
 
 #+BEGIN_SRC emacs-lisp :exports none :eval always
   (make-variable-buffer-local 'org-latex-title-command)
-  (setq org-latex-listings t)
+  ;; Use minted for code highlighting
+  (setq org-latex-src-block-backend 'minted)
+  ;; Don't add <center> tags to images I like to do that myself
+  (setq org-latex-images-centered nil)
   ;; export snippet translations
   (add-to-list 'org-export-snippet-translation-alist
              '("l" . "latex"))
@@ -22,6 +25,10 @@
 #+BIBLIOGRAPHY: sources.bib
 
 ** LaTeX Config
+*** Use minted instead of verbatim
+
+#+LATEX_HEADER: \usepackage{minted}
+
 *** Spacing
 #+LATEX_HEADER: \usepackage{setspace}
 #+LATEX_HEADER: \onehalfspacing
@@ -48,7 +55,7 @@
 #+LATEX_HEADER: \newfontfamily\headingfont{Libre Baskerville}
 #+LATEX_HEADER: \setmainfont{DejaVuSerif}
 #+LATEX_HEADER: \setmathfont{TeX Gyre DejaVu Math}
-//#+LATEX_HEADER: \setmathfont{Fira Math}[range={\infty}] % Steal some symbols
+#+LATEX_HEADER: \setmathfont{Fira Math}[range={\infty}] % Steal some symbols
 #+LATEX_HEADER: \AtBeginDocument{\renewcommand{\setminus}{\mathbin{\backslash}}} % Replace setminus with nice backslash
 **** Set fonts
 #+LATEX_HEADER: \titleformat*{\section}{\large\bfseries\headingfont}

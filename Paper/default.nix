@@ -3,6 +3,8 @@
   lib,
   emacs,
   tex,
+  pygments,
+  fontConfig ? {},
   ...
 }:
 
@@ -15,7 +17,10 @@ stdenvNoCC.mkDerivation {
   buildInputs = [
     emacs
     tex
+    pygments
   ];
+
+  FONTCONFIG_FILE = fontConfig;
 
   preBuild = ''
     HOME=$PWD
@@ -24,6 +29,7 @@ stdenvNoCC.mkDerivation {
   buildPhase = ''
     # Fixes `Fontconfig error: no writable cache directories`
     export XDG_CACHE_HOME="$(mktemp -d)"
+
     emacs -q -nl --script org2tex.el Paper.org
     latexmk -shell-escape -xelatex Paper.tex
   '';
