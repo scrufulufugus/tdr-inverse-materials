@@ -94,7 +94,7 @@ Change color of citations
 Make in-text citations smaller
 #+LATEX_HEADER_EXTRA: \renewcommand*{\citesetup}{\biburlsetup\small\frenchspacing}
 
-* Abstract :noexport:
+* TODO Abstract
 :PROPERTIES:
     :UNNUMBERED: t
 :END:
@@ -131,11 +131,6 @@ While Gauss-Jordan is no longer the most efficient matrix inversion method, **Sh
 
 Sharma et al hits many of the limitations of GPU hardware. In order to avoid the extra I/O penalty associated with global GPU memory, the algorithm must be able to store one row and one column of the matrix in shared memory. Additionally, the GPU algorithm improves on the parallel $O(n^3)$ by doing $n^2$ of the work in parallel, thus if the GPU does not have at least $n^2$ parallel threads, than the latency will increase exponentially.
 
-*** Scratch :noexport:
-
-The GPU algorithm improves on the parallel $O(n^3)$ by doing $n^2$ of the work in parallel, thus if the GPU does not have at least $n^2$ parallel threads than the latency will increase exponentially by a factor of $\log_{\symbf{P}}\left( n^2 \right)$ where $\symbf{P}$ is the number of simultaneous threads; typically $\symbf{P} = \textit{Multiprocessors} \times \textit{Threads per multiprocessor}$. A NVIDIA RTX 4090 with $\symbf{P} = 4096$ can perform at most $n = 64$ in $O(n)$ time.
-
-
 ** In-Place Approach
 :PROPERTIES:
     :CUSTOM_ID: xuebin
@@ -152,13 +147,25 @@ Due to the nature of GPU architecture, threads within the same warp are not able
 
 A better approach, introduced by **Cuneo and Bailey [cite:@cuneo:2024]**, handles TDR entirely on-GPU by implementing a work scheduling mechanism that is reminiscent of the promise and future concurrency model. While not the first on-GPU TDR, Cuneo and Bailey's method is the first to allow remapping across blocks without synchronization.
 
-*** TODO Talk about Harmonize :noexport:
+* TODO Background
 
-Additionally support deferring work indefinitely.
+** TODO Gauss-Jordan Elimination
 
-* Justification
+*** TODO Parallel Gauss-Jordan
 
-While there are many attempts at GPU matrix inversion algorithms, none thus far have used on-GPU TDR to handle the optimization of work. Cases of large recursion (see [[#strassen]]) or work sizes (see [[#sharma]]) exceeding the number of available threads can benefit immensely from the ability to remap and defer work on demand. Therefore, it is of interest to develop an algorithm that takes advantage of the highly parallel asynchronous compute offered by Cuneo and Bailey [cite:@cuneo:2024].
+*** TODO In-Place Gauss-Jordan
+
+** TODO SIMT Programming
+
+** TODO Thread-Data Remapping
+
+* TODO Main Results
+
+** TODO Deliverables
+
+** TODO Performance Analysis
+
+* TODO Conclusion
 
 * Bibliography :ignore:ignoreheading:
 
