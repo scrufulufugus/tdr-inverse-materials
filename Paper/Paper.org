@@ -1,5 +1,7 @@
 * Config/Preamble :noexport:
+
 ** Header
+
 #+TITLE: Optimized GPU-Based Matrix Inversion
 #+SUBTITLE: Through The Use of Thread-Data Remapping
 #+AUTHOR: Samuel J. Monson
@@ -7,8 +9,10 @@
 #+DATE: \today
 #+LATEX_CLASS_OPTIONS: [letterpaper,10pt,hidelinks,twocolumn]
 #+OPTIONS: toc:nil
+
 ** Emacs Config
-#+startup: show2levels
+
+#+startup: showeverything
 
 #+BEGIN_SRC emacs-lisp :exports none :eval always
   (make-variable-buffer-local 'org-latex-title-command)
@@ -25,70 +29,87 @@
 #+BIBLIOGRAPHY: sources.bib
 
 ** LaTeX Config
+
 *** Use minted instead of verbatim
 
 #+LATEX_HEADER: \usepackage{minted}
 
 *** Spacing
+
 #+LATEX_HEADER: \usepackage{setspace}
 #+LATEX_HEADER: \onehalfspacing
 
 *** Margins
+
 #+LATEX_HEADER: \usepackage[total={7in,9in}]{geometry}
 #+LATEX_HEADER: \setlength{\columnsep}{0.375in}
 
 *** Numbering
+
 #+LATEX_HEADER: \numberwithin{equation}{section} % Number equations by section
+
 *** Reduce Hyphenation
+
 #+LATEX_HEADER: \hyphenpenalty=5000
 #+LATEX_HEADER: \tolerance=700
 
 *** Setup Indentation
+
 #+LATEX_HEADER: \usepackage[indent=2.5em]{parskip}
 
 *** Set Font
-**** Packages
+
+Packages
 #+LATEX_HEADER: \usepackage{titling} % For title
 #+LATEX_HEADER: \usepackage{titlesec} % For section headings
 #+LATEX_HEADER: \usepackage{unicode-math} % For font loading
-**** Define fonts
+
+Define fonts
 #+LATEX_HEADER: \newfontfamily\headingfont{Libre Baskerville}
 #+LATEX_HEADER: \setmainfont{DejaVuSerif}
 #+LATEX_HEADER: \setmathfont{TeX Gyre DejaVu Math}
 #+LATEX_HEADER: \setmathfont{Fira Math}[range={\infty}] % Steal some symbols
 #+LATEX_HEADER: \AtBeginDocument{\renewcommand{\setminus}{\mathbin{\backslash}}} % Replace setminus with nice backslash
-**** Set fonts
+
+Set fonts
 #+LATEX_HEADER: \titleformat*{\section}{\large\bfseries\headingfont}
 #+LATEX_HEADER: \titleformat*{\subsection}{\normalsize\bfseries\headingfont}
 #+LATEX_HEADER: \titleformat*{\subsubsection}{\normalsize\headingfont}
 #+LATEX_HEADER: \renewcommand{\maketitlehooka}{\headingfont}
+
 *** Define abs
+
 #+LATEX_HEADER: \usepackage{mathtools}
 #+LATEX_HEADER: \DeclarePairedDelimiter\abs{\lvert}{\rvert} % ABS: abs{}
 
 *** Environments
-**** Angled Small Vector
+
+Angled Small Vector
 #+LATEX_HEADER: \newenvironment{asvector}{\left\langle\begin{smallmatrix}}{\end{smallmatrix}\right\rangle}
-**** Angled Vector
+
+Angled Vector
 #+LATEX_HEADER: \newenvironment{avector}{\left\langle\begin{matrix}}{\end{matrix}\right\rangle}
-**** Tight Align
+
+Tight Align
 #+LATEX_HEADER: \newenvironment{talign}{\begin{equation}\begin{aligned}}{\end{aligned}\end{equation}}
 #+LATEX_HEADER: \newenvironment{talign*}{\[\begin{aligned}}{\end{aligned}\]}
-/#+LATEX_HEADER: \newenvironment{talign*}{\centering $\displaystyle\begin{aligned}}{\end{aligned}$\par}
 
 **** Theorems
+
 #+LATEX_HEADER: \usepackage{amsthm}
 #+LATEX_HEADER: \newtheoremstyle{indentbf}{.5\topsep}{.5em}{\addtolength{\leftskip}{2.5em}}{-1.5em}{\bfseries\headingfont}{}{\newline}{}
 #+LATEX_HEADER: \newtheoremstyle{bf}{.5\topsep}{.5em}{}{}{\bfseries\headingfont}{}{.5em}{}
-***** Theorem
+
+Theorem
 #+LATEX_HEADER: \theoremstyle{bf}
 #+LATEX_HEADER: \newtheorem{thm}{Theorem}[section]
 
-***** Definition
+Definition
 #+LATEX_HEADER: \theoremstyle{indentbf}
 #+LATEX_HEADER: \newtheorem{defn}{Definition}[section]
 
 **** Algorithm
+
 #+LATEX_HEADER: \usepackage[ruled,linesnumbered,commentsnumbered]{algorithm2e}
 
 *** Citations
