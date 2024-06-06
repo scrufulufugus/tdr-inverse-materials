@@ -7,7 +7,7 @@
 #+AUTHOR: Samuel J. Monson
 #+EMAIL: monsonsamuel@seattleu.edu
 #+DATE: \today
-#+LATEX_CLASS_OPTIONS: [letterpaper,10pt,hidelinks,twocolumn]
+#+LATEX_CLASS_OPTIONS: [letterpaper,8pt,hidelinks,twocolumn]
 #+OPTIONS: toc:nil
 
 ** Emacs Config
@@ -134,7 +134,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 * Problem Statement
 
-@@l:{\Large M}@@atrix inversion is a fundamental component of Linear Algebra that has wide practical application in nearly all math-adjacent fields. Most notably, it has proven to be the best algebraic method for solving linear equations on a computer [cite:@press:2007]. This has made matrix inversion a critical component of everything from Computer Graphics to Machine Learning [cite:@anton:2014].
+@@latex:{\Large M}@@atrix inversion is a fundamental component of Linear Algebra that has wide practical application in nearly all math-adjacent fields. Most notably, it has proven to be the best algebraic method for solving linear equations on a computer [cite:@press:2007]. This has made matrix inversion a critical component of everything from Computer Graphics to Machine Learning [cite:@anton:2014].
 
 However, a significant drawback of matrix inversion lies in its computationally intensive nature. Traditional methods such as Gauss-Jordan [cite:@steven:1987] and LU-Decomposition [cite:@press:2007] possess a multiplicative asymptotic time complexity of $O(n^3)$ for any given $n \times n$ matrix. In 1969 Strassen [cite:@strassen:1969] introduced a new method that brought the complexity down to $O(n^{2.808})$. Following this discovery, various groups competed to improve on Strassen's results culminating in the Coppersmith and Winograd method [cite:@coppersmith:1981] which achieved a time complexity of $O(n^{2.376})$. Theoretically, the best sequential cost achievable for matrix inversion is $O(n^2)$ [cite:@cohn:2005]; however, no general algorithm has been found that achieves this cost.
 
