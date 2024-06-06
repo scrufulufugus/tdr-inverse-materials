@@ -112,6 +112,9 @@ Definition
 
 #+LATEX_HEADER: \usepackage[ruled,linesnumbered,commentsnumbered]{algorithm2e}
 
+Allows for placing floats at top or bottom of twocolumn page
+#+LATEX_HEADER: \usepackage{stfloats}
+
 *** Citations
 
 Show back-references to in-text citations
@@ -220,7 +223,7 @@ Thus, there are many methods of deriving a combination of operations. For this r
 
 #+CAPTION: Gauss-Jordan Elimination
 #+NAME: algo-1
-\begin{algorithm*}
+\begin{algorithm*}[b]
     \KwIn{An augmented matrix $M$ that has $n$ rows}
     \ForEach{row $R_i$ in $M$}{
         \tcp{Step 1: Swap our current row for one with a non-zero $i\text{th}$ column.}
