@@ -262,6 +262,10 @@ Thus, there are many methods of deriving a combination of operations. For this r
 
 *** TODO Parallel Gauss-Jordan
 
+The parallel Gauss-Jordan method introduced by Sharma et al [cite:@sharma:2013] takes the algorithm given in (Algorithm [[algo-1]]) and applies each set of associative row operations in parallel. To determine which set of operations are associative, and are therefore able to be performed in parallel, we will assume all are and disprove individual cases. The first obvious disproof is the swap operation which we showed in (Eqn [[non-unique]]) is non-associative with other operations on the rows it affects. Thus in our algorithm the swap, denoted /step 1/, must be taken in serial with its surrounding operations. This further causes the enclosing loop at line 1 to be serial; since each iteration introduces a new swap operation.
+
+For our remaining operations, /step 2/ performs a scale on the $i\text{th}$ row, while the loop, /step 3/, performs a shift on every other row. Scaling is equivalent to scalar multiplication on a vector and thus scaling operations are associative with each other following the associativity of scalar multiplication. Shifting operations consist of a multiply followed by an addition; since multiplication and addition together are not strictly associative it seems that shift operations are non-associative. However, it is also possible to perform operations in parallel if they are linearly independent. Each operation has a strict set of rows that it operates on so we can consider an operation linearly independent from operations on other rows. The shift operation technically operates on two rows but only transforms one of those rows. Thus shift operations can generally be considered linearly independent with other shift operations that utilize the same multiple row, but not with operations that modify the row. Therefore, /step 2/ and /step 3/ must be performed in serial since they both operate on the $i\text{th}$ row, but all /step 3.1/ can be done in parallel as each shift is linearly independent.
+
 *** TODO In-Place Gauss-Jordan
 
 ** TODO SIMT Programming
