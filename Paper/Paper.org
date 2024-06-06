@@ -89,7 +89,7 @@
 #+LATEX_HEADER: \newtheorem{defn}{Definition}[section]
 
 **** Algorithm
-#+LATEX_HEADER: \usepackage[ruled]{algorithm2e}
+#+LATEX_HEADER: \usepackage[ruled,linesnumbered,commentsnumbered]{algorithm2e}
 
 *** Citations
 
@@ -205,7 +205,7 @@ Thus, there are many methods of deriving a combination of operations. For this r
         \tcp{Step 1: Swap our current row for one with a non-zero $i\text{th}$ column.}
         Find $R_k$ where $R_{ki} \neq 0$
 
-        $\textbf{swap}(R_i, R_k)$
+        $\text{swap}(R_i, R_k)$
 
         \tcp{Step 2: Divide our current row by its $i\text{th}$ element.}
         $R_i \gets R_i / R_{ii}$
