@@ -7,7 +7,8 @@
 #+AUTHOR: Samuel J. Monson
 #+EMAIL: monsonsamuel@seattleu.edu
 #+DATE: \today
-#+LATEX_CLASS_OPTIONS: [letterpaper,8pt,hidelinks,twocolumn]
+#+LATEX_CLASS: extarticle
+#+LATEX_CLASS_OPTIONS: [letterpaper,9pt,hidelinks,twocolumn]
 #+OPTIONS: toc:nil
 
 ** Emacs Config
@@ -23,6 +24,16 @@
   ;; export snippet translations
   (add-to-list 'org-export-snippet-translation-alist
              '("l" . "latex"))
+  ;; Add a document class for extarticle
+  (add-to-list 'org-latex-classes
+               '("extarticle" "\\documentclass[10pt]{extarticle}"
+                ("\\section{%s}" . "\\section*{%s}")
+                ("\\subsection{%s}" . "\\subsection*{%s}")
+                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+  ;; Clear output
+  ()
 #+end_src
 
 #+CITE_EXPORT: biblatex ieee

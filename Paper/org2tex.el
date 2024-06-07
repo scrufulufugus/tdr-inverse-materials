@@ -40,6 +40,15 @@
 ;; export snippet translations
 (add-to-list 'org-export-snippet-translation-alist
   '("l" . "latex"))
+;; Add a document class for extarticle
+(add-to-list 'org-latex-classes
+  '("extarticle" "\\documentclass[10pt]{extarticle}"
+    ("\\section{%s}" . "\\section*{%s}")
+    ("\\subsection{%s}" . "\\subsection*{%s}")
+    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+    ("\\paragraph{%s}" . "\\paragraph*{%s}")
+    ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
 
 
 ;; Define an interactive function for easy testing
