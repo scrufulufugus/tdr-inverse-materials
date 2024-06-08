@@ -391,9 +391,9 @@ Our sparse matrix results (Figure [[fig:sparse]]) present a more favorable outco
 
 The error for our sparse matrix set (Figure [[fig:sparse-error]]) follows a similar pattern follows a similar pattern to the random matrix results and is low enough to not raise concerns.
 
-* TODO Conclusion
+* Conclusion
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci eu lobortis elementum nibh tellus molestie nunc non. Neque aliquam vestibulum morbi blandit cursus risus at ultrices. Aliquet bibendum enim facilisis gravida neque convallis a cras. Etiam erat velit scelerisque in dictum non. Sed turpis tincidunt id aliquet risus. Eu volutpat odio facilisis mauris. Duis at consectetur lorem donec massa sapien. Id aliquet risus feugiat in ante. Tincidunt augue interdum velit euismod in pellentesque massa placerat duis. Commodo nulla facilisi nullam vehicula ipsum a arcu. Pharetra vel turpis nunc eget lorem dolor sed viverra ipsum. Suspendisse ultrices gravida dictum fusce ut. Feugiat scelerisque varius morbi enim. Tincidunt arcu non sodales neque sodales ut.
+The results of our study revealed interesting performance trends across both randomly generated and sparse matrices. While ~tdr-inverse~ exhibited higher runtime compared to the standard on-GPU ~inverse~ for random matrices, it showcased promising performance improvements for larger sparse matrices. Both implementations maintained low error rates, validating the accuracy and reliability of the inversion results.
 
 * Bibliography :ignore:ignoreheading:
 
