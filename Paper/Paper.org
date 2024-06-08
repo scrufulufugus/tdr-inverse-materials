@@ -142,12 +142,12 @@ Change color of citations
 Make in-text citations smaller
 #+LATEX_HEADER_EXTRA: \renewcommand*{\citesetup}{\biburlsetup\small\frenchspacing}
 
-* TODO Abstract
+* Abstract
 :PROPERTIES:
     :UNNUMBERED: t
 :END:
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Orci eu lobortis elementum nibh tellus molestie nunc non. Neque aliquam vestibulum morbi blandit cursus risus at ultrices. Aliquet bibendum enim facilisis gravida neque convallis a cras. Etiam erat velit scelerisque in dictum non. Sed turpis tincidunt id aliquet risus. Eu volutpat odio facilisis mauris. Duis at consectetur lorem donec massa sapien. Id aliquet risus feugiat in ante. Tincidunt augue interdum velit euismod in pellentesque massa placerat duis. Commodo nulla facilisi nullam vehicula ipsum a arcu. Pharetra vel turpis nunc eget lorem dolor sed viverra ipsum. Suspendisse ultrices gravida dictum fusce ut. Feugiat scelerisque varius morbi enim. Tincidunt arcu non sodales neque sodales ut.
+This research paper focuses on the development and analysis of a matrix inversion program capable of efficiently utilizing GPU hardware though the use of Thread-Data Remapping. We showcase existing published inverse algorithms and implementations while highlighting the importance of considering matrix characteristics and computational optimizations. We introduce the idea of Thread-Data Remapping into the fields of matrix inversion as a method of optimizing for sparse matrix inversion while retaining the ability to invert all kinds of matrices. Our final results demonstrate an implementation that is able to outperform traditional implementations when applied to sparse matrices.
 
 * Introduction
 
