@@ -357,29 +357,29 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 During the research, we developed three key implementations of matrix inversion. These implementations demonstrated our understanding of the problem and validated our research results. The first implementation, called ~cpu-inverse~, runs Algorithm [[algo-2]] in a single serial CPU thread. This program verified the validity of the inverse algorithm and helped in troubleshooting race conditions in the parallel implementations. The next program, ~inverse~, applies Algorithm [[algo-2]] on the GPU using standard CPU-based kernel synchronization. This implementation is comparable to the work of Sharma et al. [cite:@sharma:2013], with the optimizations from DasGupta [cite:@dasgupta:2013]. The final program, ~tdr-inverse~, summarizes our research results and uses the Harmonize\copy library to optimize matrix inversion through Thread-Data Remapping.
 
-** TODO Performance Analysis
+** Performance Analysis
 
-To evaluate the performance of our matrix inversion we ran the standard on-GPU ~inverse~ and TDR-based ~tdr-inverse~ programs against a suite of matrices and compared the runtime of each method. Tests were performed on a NVIDIA\reg A30 Tensor Core GPU (Driver 545.23.08) paired with a Intel\reg Xeon\reg Silver 4316 CPU. Timing of each matrix inversion was started after allocating memory and loading the matrix into the GPU. Matrices are stored and inverted as IEEE 754 64-bit floating point numbers and are thus susceptible to floating point inaccuracy. To compute the error of each in inverse, the matrices were inverted with the inverse method of the SciPy Python\trade library [cite:@SciPy:2020] and an element-wise mean absolute error was taken.
+To evaluate the performance of our matrix inversion, we conducted tests using the standard on-GPU ~inverse~ and TDR-based ~tdr-inverse~ programs on a suite of matrices, comparing the runtime of each method. The tests were carried out on a NVIDIA\reg A30 Tensor Core GPU (Driver 545.23.08) paired with an Intel\reg Xeon\reg Silver 4316 CPU. The timing for each matrix inversion was initiated after memory allocation and loading the matrix into the GPU. Matrices were stored and inverted as IEEE 754 64-bit floating-point numbers, making them susceptible to floating-point inaccuracy. To calculate the error of each inverse, we used the inverse method from the SciPy Python\trade library [cite:@SciPy:2020] as a baseline and computed an element-wise mean absolute error.
 
-Two suites of matrices were tested. Figures [[fig:random]] and [[fig:random-error]] pertain to a set of randomly generated whole number matrices ranging from $3 \times 3$ to $4096 \times 4096$. Figures [[fig:sparse]], [[fig:sparse-error]], and [[fig:sparse-sparsity]] utilize sparse matrices from the University of Florida SuiteSparse Matrix Collection [cite:@davis:2011]. These matrices range from $1083 \times 1083$ to $19366 \times 19366$ and consist of a large number of zero elements.
+Two sets of matrices were tested. Figures [[fig:random]] and [[fig:random-error]] correspond to a collection of randomly generated whole number matrices ranging in size from $3 \times 3$ to $4096 \times 4096$. Figures [[fig:sparse]], [[fig:sparse-error]], and [[fig:sparse-sparsity]] utilized sparse matrices from the University of Florida SuiteSparse Matrix Collection [cite:@davis:2011], ranging from $1083 \times 1083$ to $19366 \times 19366$ and containing a significant number of zero elements.
 
 #+CAPTION: Random $n \times n$ matrices
 #+NAME: fig:random
 [[./Figs/all_random.png]]
 
-Figure [[fig:random]] shows that in the general case given by our random matrices ~tdr-inverse~ performs strictly worse then the normal on-GPU ~inverse~; however the trend of each line shows they are within the same polynomial family. The difference likely due to the overhead Thread-Data Remapping incurs on each thread call. We make exponentially more TDR thread calls in ~tdr-inverse~ then kernel launches in ~inverse~; the workload we give each thread is so minuscule that we do not see any benefit in the flexibility TDR provides us.
+Figure [[fig:random]] illustrates that in the general case represented by our random matrices, ~tdr-inverse~ performs consistently worse than the standard on-GPU ~inverse~; however, the trend of each line indicates they belong to the same polynomial family. This difference is likely due to the overhead incurred by Thread-Data Remapping on each thread call. We make exponentially more TDR thread calls in ~tdr-inverse~ than kernel launches in the standard ~inverse~; the workload assigned to each thread is so minimal that we do not observe any benefit from the flexibility provided by TDR.
 
 #+CAPTION: Random $n \times n$ matrices error
 #+NAME: fig:random-error
 [[./Figs/all_random_error.png]]
 
-The error of our random matrix set (Figure [[fig:random-error]]) stays in an acceptable range below $10^{-7}$ which is low enough to be attributed to precision loss and is inconsequential to the goals of this research. Further, both ~inverse~ and ~tdr-inverse~ have exactly the same error which validates the accuracy of ~tdr-inverse~. We do see a strange peak for the matrix $n = 2048$; however, it is still within the low error range of other results.
+The error of our random matrix set (Figure [[fig:random-error]]) remains within an acceptable range below $10^{-7}$, attributable to precision loss and inconsequential to the research objectives. Moreover, both ~inverse~ and ~tdr-inverse~ exhibit identical error rates, confirming the accuracy of ~tdr-inverse~. Although there is a peculiar peak for the matrix $n = 2048$, it still falls within the low error range observed in other results.
 
 #+CAPTION: Sparse $n \times n$ matrices
 #+NAME: fig:sparse
 [[./Figs/all_sparse.png]]
 
-Our sparse matrix results (Figure [[fig:sparse]]) paint a far more favorable picture for ~tdr-inverse~. As the size of the matrix increases, ~tdr-inverse~ meets, and eventually exceeds, the performance of ~inverse~. The first point in the results that ~tdr-inverse~ has a lower latency than ~inverse~ is $n = 4800$; however, ~tdr-inverse~ loses its lead at $n = 10974$. Graphing the sparsity of our matrices (Figure [[fig:sparse-sparsity]]) we can see that the overall sparsity of $n = 10974$ is lower then its surrounding matrices which explains this discrepancy.
+Our sparse matrix results (Figure [[fig:sparse]]) present a more favorable outcome for ~tdr-inverse~. As the matrix size increases, ~tdr-inverse~ matches and eventually surpasses the performance of the standard ~inverse~. The initial point where ~tdr-inverse~ shows lower latency than ~inverse~ is at $n = 4800$; however, ~tdr-inverse~ loses this advantage at $n = 10974$. By examining the sparsity of our matrices (Figure [[fig:sparse-sparsity]]), we observe that the overall sparsity of $n = 10974$ is lower than that of its neighboring matrices, explaining this discrepancy.
 
 #+CAPTION: Sparisity of matrices
 #+NAME: fig:sparse-sparsity
@@ -389,7 +389,7 @@ Our sparse matrix results (Figure [[fig:sparse]]) paint a far more favorable pic
 #+NAME: fig:sparse-error
 [[./Figs/all_sparse_error.png]]
 
-The error for our sparse matrix set (Figure [[fig:sparse-error]]) follows a similar pattern follows a similar pattern to the random matrix results and is low enough to not cause concern.
+The error for our sparse matrix set (Figure [[fig:sparse-error]]) follows a similar pattern follows a similar pattern to the random matrix results and is low enough to not raise concerns.
 
 * TODO Conclusion
 
